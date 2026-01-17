@@ -10,23 +10,8 @@
       theme: {
         extend: {
           colors: {
-            parchment: {
-              50: '#faf8f5',
-              100: '#f0ebe3',
-              200: '#e4dcd0',
-              300: '#d4c9b8',
-              400: '#bfab94',
-              500: '#a99077',
-              600: '#8f7560',
-              700: '#6b5848',
-              800: '#4a3d32',
-              900: '#2d2520',
-            },
-            navy: {
-              800: '#1a2744',
-              900: '#0d1526',
-              950: '#080c14',
-            }
+            parchment: { 50: '#faf8f5', 100: '#f0ebe3', 200: '#e4dcd0', 300: '#d4c9b8', 400: '#bfab94', 500: '#a99077', 600: '#8f7560', 700: '#6b5848', 800: '#4a3d32', 900: '#2d2520' },
+            navy: { 800: '#1a2744', 900: '#0d1526', 950: '#080c14' }
           }
         }
       }
@@ -36,28 +21,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Source Sans 3', system-ui, sans-serif;
-    }
-    .font-serif {
-      font-family: 'Libre Baskerville', Georgia, serif;
-    }
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in {
-      animation: fade-in 0.3s ease-out;
-    }
-    .star-field {
-      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
-      background-size: 18px 18px;
-    }
-    .card-shadow {
-      box-shadow: 0 12px 30px -18px rgba(11,31,58,0.55);
-    }
+    body { font-family: 'Source Sans 3', system-ui, sans-serif; }
+    .font-serif { font-family: 'Libre Baskerville', Georgia, serif; }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fade-in 0.3s ease-out; }
+    .star-field { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 18px 18px; }
+    .card-shadow { box-shadow: 0 12px 30px -18px rgba(11,31,58,0.55); }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+    .discussion-card { min-height: 280px; }
   </style>
 </head>
 <body class="min-h-screen bg-parchment-300 text-slate-900">
@@ -69,9 +41,7 @@
       <!-- Header -->
       <header class="relative overflow-hidden rounded-t-xl shadow-lg bg-gradient-to-r from-navy-950 via-navy-900 to-slate-900 text-white p-8">
         <div class="absolute inset-0 star-field"></div>
-        <div class="absolute top-0 right-0 p-4 opacity-10">
-          <svg class="w-28 h-28" fill="currentColor" viewBox="0 0 24 24"><path d="M4 15V9h8V4.16L12.84 4.5L13.5 6L15 5.5L15.5 7L17 6.5L16.5 8L18 7.5L17.5 9H22v6h-8v4.84l-.84.34L12.5 18L11 18.5L10.5 17L9 17.5L9.5 16L8 16.5L8.5 15H4z"/></svg>
-        </div>
+        <div class="absolute top-0 right-0 p-4 opacity-10"><svg class="w-28 h-28" fill="currentColor" viewBox="0 0 24 24"><path d="M4 15V9h8V4.16L12.84 4.5L13.5 6L15 5.5L15.5 7L17 6.5L16.5 8L18 7.5L17.5 9H22v6h-8v4.84l-.84.34L12.5 18L11 18.5L10.5 17L9 17.5L9.5 16L8 16.5L8.5 15H4z"/></svg></div>
         <div class="relative z-10 flex justify-between items-start">
           <div>
             <div class="flex items-center gap-2 text-amber-300/80 mb-2 font-mono text-sm uppercase tracking-widest">
@@ -79,14 +49,10 @@
               <span>Historical Snapshot · 2026</span>
             </div>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 font-serif tracking-tight">America at 250</h1>
-            <p class="text-xl text-blue-100/90 font-light max-w-2xl">
-              "A Fragile Experiment": An audit of the United States' moral health at its Semiquincentennial.
-            </p>
+            <p class="text-xl text-blue-100/90 font-light max-w-2xl">"A Fragile Experiment": An audit of the United States' moral health at its Semiquincentennial.</p>
           </div>
           <button onclick="toggleDrawer()" class="hidden md:flex flex-col items-center gap-1 text-xs text-blue-200/70 hover:text-white transition-colors">
-            <div class="p-2 bg-white/10 rounded-full backdrop-blur-sm">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            </div>
+            <div class="p-2 bg-white/10 rounded-full backdrop-blur-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
             Sources
           </button>
         </div>
@@ -94,18 +60,10 @@
 
       <!-- Navigation Tabs -->
       <div class="flex flex-wrap border-b border-parchment-400 bg-parchment-200/95 backdrop-blur-sm shadow-sm sticky top-0 z-20">
-        <button onclick="showTab('overview')" data-tab="overview" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-amber-800 border-b-4 border-amber-600 bg-amber-100/50">
-          Health Check
-        </button>
-        <button onclick="showTab('analysis')" data-tab="analysis" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">
-          Historian's Lens
-        </button>
-        <button onclick="showTab('discussion')" data-tab="discussion" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">
-          Points of Inquiry
-        </button>
-        <button onclick="showTab('anthology')" data-tab="anthology" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">
-          The Anthology
-        </button>
+        <button onclick="showTab('overview')" data-tab="overview" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-amber-800 border-b-4 border-amber-600 bg-amber-100/50">Health Check</button>
+        <button onclick="showTab('analysis')" data-tab="analysis" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">Historian's Lens</button>
+        <button onclick="showTab('discussion')" data-tab="discussion" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">Points of Inquiry</button>
+        <button onclick="showTab('anthology')" data-tab="anthology" class="tab-btn flex-1 py-4 px-2 text-center font-bold text-xs md:text-sm uppercase tracking-wide transition-colors text-parchment-600 hover:bg-parchment-100 hover:text-parchment-800">The Anthology</button>
       </div>
 
       <!-- Main Content -->
@@ -113,69 +71,29 @@
         
         <!-- TAB 1: HEALTH CHECK -->
         <div id="tab-overview" class="tab-content active animate-fade-in">
-          
           <div class="flex items-center gap-2 mb-4 text-slate-800 border-b border-parchment-400 pb-2">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
             <h2 class="text-xl font-bold uppercase tracking-wider">Republic Health Check</h2>
           </div>
-          <p class="text-parchment-700 text-sm leading-relaxed mb-6">
-            A diagnostic instrument for the American experiment. Click an indicator to analyze the signals, then explore the primary source layer for historical grounding.
-          </p>
-          
+          <p class="text-parchment-700 text-sm leading-relaxed mb-6">A diagnostic instrument for the American experiment. Click an indicator to analyze the signals, then explore the primary source layer for historical grounding.</p>
           <div class="space-y-4 mb-8" id="health-check-container"></div>
-
-          <!-- Chronological Context -->
           <div class="grid md:grid-cols-3 gap-6 mt-12 pt-8 border-t border-parchment-400">
             <div class="col-span-2">
               <h3 class="text-parchment-600 font-bold uppercase tracking-widest text-xs mb-4">Chronological Context</h3>
               <div class="mt-2">
-                <div class="relative pl-8 pb-8 group">
-                  <div class="absolute left-[11px] top-3 h-full w-0.5 bg-parchment-400 group-hover:bg-amber-400 transition-colors"></div>
-                  <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10 group-hover:bg-amber-400 transition-colors">
-                    <div class="w-2 h-2 rounded-full bg-parchment-600 group-hover:bg-amber-700 transition-colors"></div>
-                  </div>
-                  <div>
-                    <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">January 1, 2026</span>
-                    <h3 class="text-base font-bold text-slate-800 leading-tight mb-1">The Quarter-Century Mark</h3>
-                    <p class="text-parchment-700 text-xs leading-relaxed">The second quarter of the 21st century begins. Historians use these markers to assess eras of rapid change.</p>
-                  </div>
-                </div>
-                <div class="relative pl-8 pb-8 group">
-                  <div class="absolute left-[11px] top-3 h-full w-0.5 bg-parchment-400 group-hover:bg-amber-400 transition-colors"></div>
-                  <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10 group-hover:bg-amber-400 transition-colors">
-                    <div class="w-2 h-2 rounded-full bg-parchment-600 group-hover:bg-amber-700 transition-colors"></div>
-                  </div>
-                  <div>
-                    <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">January 20, 2026</span>
-                    <h3 class="text-base font-bold text-slate-800 leading-tight mb-1">Presidential Term Milestone</h3>
-                    <p class="text-parchment-700 text-xs leading-relaxed">Year two of the President's second term. Historically significant for cementing policy legacies.</p>
-                  </div>
-                </div>
-                <div class="relative pl-8 group">
-                  <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10 group-hover:bg-amber-400 transition-colors">
-                    <div class="w-2 h-2 rounded-full bg-parchment-600 group-hover:bg-amber-700 transition-colors"></div>
-                  </div>
-                  <div>
-                    <span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">July 4, 2026</span>
-                    <h3 class="text-base font-bold text-slate-800 leading-tight mb-1">The Semiquincentennial</h3>
-                    <p class="text-parchment-700 text-xs leading-relaxed">The United States celebrates its 250th birthday. A rare moment for reflection on democratic durability.</p>
-                  </div>
-                </div>
+                <div class="relative pl-8 pb-8 group"><div class="absolute left-[11px] top-3 h-full w-0.5 bg-parchment-400"></div><div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10"><div class="w-2 h-2 rounded-full bg-parchment-600"></div></div><div><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">January 1, 2026</span><h3 class="text-base font-bold text-slate-800 leading-tight mb-1">The Quarter-Century Mark</h3><p class="text-parchment-700 text-xs leading-relaxed">The second quarter of the 21st century begins.</p></div></div>
+                <div class="relative pl-8 pb-8 group"><div class="absolute left-[11px] top-3 h-full w-0.5 bg-parchment-400"></div><div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10"><div class="w-2 h-2 rounded-full bg-parchment-600"></div></div><div><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">January 20, 2026</span><h3 class="text-base font-bold text-slate-800 leading-tight mb-1">Presidential Term Milestone</h3><p class="text-parchment-700 text-xs leading-relaxed">Year two of the President's second term.</p></div></div>
+                <div class="relative pl-8 group"><div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-parchment-400 border-4 border-parchment-200 shadow-sm flex items-center justify-center z-10"><div class="w-2 h-2 rounded-full bg-parchment-600"></div></div><div><span class="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-parchment-300 text-parchment-800 mb-1">July 4, 2026</span><h3 class="text-base font-bold text-slate-800 leading-tight mb-1">The Semiquincentennial</h3><p class="text-parchment-700 text-xs leading-relaxed">The United States celebrates its 250th birthday.</p></div></div>
               </div>
             </div>
-            
             <div class="flex flex-col gap-6">
               <div class="bg-gradient-to-br from-navy-950 to-slate-900 text-white p-6 rounded-lg shadow-lg h-fit relative overflow-hidden">
                 <div class="absolute inset-0 star-field opacity-50"></div>
                 <div class="relative z-10">
                   <h3 class="font-bold uppercase text-xs text-amber-300/80 mb-2">Historical Anchor</h3>
                   <h4 class="font-bold text-lg mb-2">Frederick Douglass</h4>
-                  <p class="text-sm text-blue-100/80 leading-snug mb-3">
-                    Born into enslavement, yet famously said in 1852: <span class="italic text-amber-200">"I for one do not despair of this republic."</span>
-                  </p>
-                  <div class="text-xs bg-white/10 backdrop-blur-sm inline-block px-2 py-1 rounded">
-                    Referenced for: Optimism in Crisis
-                  </div>
+                  <p class="text-sm text-blue-100/80 leading-snug mb-3">Born into enslavement, yet famously said in 1852: <span class="italic text-amber-200">"I for one do not despair of this republic."</span></p>
+                  <div class="text-xs bg-white/10 backdrop-blur-sm inline-block px-2 py-1 rounded">Referenced for: Optimism in Crisis</div>
                 </div>
               </div>
             </div>
@@ -184,76 +102,49 @@
 
         <!-- TAB 2: HISTORIAN'S LENS -->
         <div id="tab-analysis" class="tab-content animate-fade-in">
-          
           <div class="flex items-center gap-2 mb-4 text-slate-800 border-b border-parchment-400 pb-2">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
             <h2 class="text-xl font-bold uppercase tracking-wider">Core Concepts</h2>
           </div>
-          <p class="text-parchment-700 leading-relaxed mb-6">
-            Meacham argues that democracy is not a guaranteed state, but a fragile experiment dependent on human character. Click each framework to explore the source material and connections.
-          </p>
-
+          <p class="text-parchment-700 leading-relaxed mb-6">Meacham argues that democracy is not a guaranteed state, but a fragile experiment dependent on human character. Click each framework to explore the source material and connections.</p>
           <div class="space-y-4 mb-8" id="core-concepts-container"></div>
-
-          <!-- Warning Box -->
-          <div class="bg-gradient-to-br from-amber-200 to-orange-200/50 p-6 rounded-lg border border-amber-400/60 mb-8">
-            <h3 class="text-amber-900 font-bold flex items-center gap-2 mb-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-              The Warning: Norms vs. Laws
-            </h3>
-            <p class="text-amber-900 text-sm">
-              Meacham emphasizes that "Norms" are doing the right thing when the law doesn't force you to. The crisis occurs when leaders abandon norms and only respect the literal letter of the law to seize power.
-            </p>
+          <div class="bg-gradient-to-br from-amber-100/70 to-orange-100/40 p-6 rounded-lg border border-amber-300/50 mb-8">
+            <h3 class="text-amber-900 font-bold flex items-center gap-2 mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>The Warning: Norms vs. Laws</h3>
+            <p class="text-amber-900 text-sm">Meacham emphasizes that "Norms" are doing the right thing when the law doesn't force you to. The crisis occurs when leaders abandon norms and only respect the literal letter of the law to seize power.</p>
           </div>
-
-          <!-- The Anthology's Argument -->
           <div class="pt-6 border-t border-parchment-400">
             <h3 class="font-bold text-parchment-600 uppercase tracking-widest text-xs mb-4">The Anthology's Argument</h3>
-            <p class="text-parchment-700 text-sm mb-6">
-              From <em>American Struggle</em>: Meacham frames the book as a chorus of voices (sometimes discordant, always fascinating) showing that conflict is perennial, not aberrant.
-            </p>
-            
+            <p class="text-parchment-700 text-sm mb-6">From <em>American Struggle</em>: Meacham frames the book as a chorus of voices (sometimes discordant, always fascinating) showing that conflict is perennial, not aberrant.</p>
             <div class="space-y-4" id="anthology-argument-container"></div>
           </div>
         </div>
 
         <!-- TAB 3: POINTS OF INQUIRY -->
         <div id="tab-discussion" class="tab-content animate-fade-in">
-          
           <div class="flex items-center gap-2 mb-4 text-slate-800 border-b border-parchment-400 pb-2">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             <h2 class="text-xl font-bold uppercase tracking-wider">Points of Inquiry</h2>
           </div>
-          <p class="mb-6 text-parchment-700">
-            Questions for consideration. Click through three layers: Question, Historical Context, Connections.
-          </p>
-          
+          <p class="mb-6 text-parchment-700">Questions for consideration. Click through three layers: Question, Historical Context, Connections.</p>
           <div class="space-y-4" id="discussion-container"></div>
         </div>
 
         <!-- TAB 4: THE ANTHOLOGY -->
         <div id="tab-anthology" class="tab-content animate-fade-in">
-          
           <div class="flex items-center gap-2 mb-4 text-slate-800 border-b border-parchment-400 pb-2">
             <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <h2 class="text-xl font-bold uppercase tracking-wider">The Anthology's Arc</h2>
           </div>
-          <p class="text-parchment-700 text-sm leading-relaxed mb-6">
-            From Meacham's <em>American Struggle</em>: primary sources from 1619 to present that trace the ongoing battle between America's ideals and its realities. Click any moment to explore.
-          </p>
-          
+          <p class="text-parchment-700 text-sm leading-relaxed mb-6">From Meacham's <em>American Struggle</em>: primary sources from 1619 to present that trace the ongoing battle between America's ideals and its realities. Click any moment to explore.</p>
           <div class="relative" id="anthology-timeline"></div>
         </div>
-
       </main>
       
-      <!-- Footer -->
       <footer class="mt-8 text-center text-parchment-600 text-sm pb-8">
         <button onclick="toggleDrawer()" class="hover:text-amber-700 underline underline-offset-2 transition-colors">View Sources & Glossary</button>
         <p class="mt-2">Based on Jon Meacham's interviews and <em>American Struggle</em> (2026)</p>
         <p class="mt-1 text-parchment-500">© 2026 Historical Education Initiative</p>
       </footer>
-
     </div>
   </div>
 
@@ -262,905 +153,120 @@
   <div id="drawer" class="fixed inset-y-0 right-0 w-full md:w-96 bg-parchment-200 shadow-2xl transform translate-x-full transition-transform duration-300 z-50 overflow-y-auto border-l border-parchment-500">
     <div class="p-6">
       <div class="flex justify-between items-center mb-8 border-b border-parchment-400 pb-4">
-        <h2 class="text-xl font-serif font-bold text-slate-900 flex items-center gap-2">
-          <svg class="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          Sources & Glossary
-        </h2>
-        <button onclick="toggleDrawer()" class="p-1 hover:bg-parchment-300 rounded-full transition-colors">
-          <svg class="w-6 h-6 text-parchment-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+        <h2 class="text-xl font-serif font-bold text-slate-900 flex items-center gap-2"><svg class="w-5 h-5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Sources & Glossary</h2>
+        <button onclick="toggleDrawer()" class="p-1 hover:bg-parchment-300 rounded-full transition-colors"><svg class="w-6 h-6 text-parchment-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
       </div>
-      
       <div class="space-y-8">
-        <section>
-          <h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Primary Interviews</h3>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm">
-              <span class="font-bold block text-slate-900">Jon Meacham on The Late Show</span>
-              <span class="text-parchment-600 text-xs">January 15, 2026 · CBS</span>
-              <p class="mt-1 text-xs italic text-parchment-700">Source of "Mission Statement vs. User's Guide" analogy and "Moral Crisis" framework.</p>
-            </li>
-            <li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm">
-              <span class="font-bold block text-slate-900">Meacham at Harvard Kennedy School</span>
-              <span class="text-parchment-600 text-xs">April 2025</span>
-              <p class="mt-1 text-xs italic text-parchment-700">"We live in the extraordinarily long shadow not just of Appomattox, but of Reconstruction."</p>
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Primary Historical Sources</h3>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm">
-              <span class="font-bold block text-slate-900">Frederick Douglass</span>
-              <span class="text-parchment-600 text-xs">"What to the Slave is the Fourth of July?" (1852)</span>
-              <a href="https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july" target="_blank" rel="noopener noreferrer" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">
-                Constitution Center <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </li>
-            <li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm">
-              <span class="font-bold block text-slate-900">Abraham Lincoln</span>
-              <span class="text-parchment-600 text-xs">First Inaugural Address (March 4, 1861)</span>
-              <a href="https://avalon.law.yale.edu/19th_century/lincoln1.asp" target="_blank" rel="noopener noreferrer" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">
-                Yale Avalon Project <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </li>
-            <li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm">
-              <span class="font-bold block text-slate-900">Robert F. Kennedy</span>
-              <span class="text-parchment-600 text-xs">Indianapolis Speech (April 4, 1968)</span>
-              <a href="https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy/robert-f-kennedy-speeches/statement-on-assassination-of-martin-luther-king-jr-indianapolis-indiana-april-4-1968" target="_blank" rel="noopener noreferrer" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">
-                JFK Library <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Book Reference</h3>
-          <div class="bg-gradient-to-br from-amber-200 to-parchment-200 p-4 rounded-lg border border-amber-400/60 shadow-sm">
-            <span class="font-bold block text-slate-900">American Struggle</span>
-            <span class="text-amber-800 text-xs font-medium">Jon Meacham (2026)</span>
-            <p class="mt-2 text-xs text-slate-700 italic">Democracy, Dissent, and the Pursuit of a More Perfect Union. An anthology of primary sources from 1619 to present.</p>
-          </div>
-        </section>
-        
-        <section>
-          <h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Glossary</h3>
-          <div class="text-sm text-slate-700 space-y-3 bg-white/80 p-4 rounded-lg border border-parchment-400">
-            <p><span class="font-bold text-slate-800">Semiquincentennial:</span> The 250th anniversary.</p>
-            <p><span class="font-bold text-slate-800">Norms:</span> Unwritten rules of conduct that sustain the legal system. Doing the right thing when the law doesn't force you to.</p>
-            <p><span class="font-bold text-slate-800">Social Contract:</span> The implicit agreement among citizens to constrain individual desires for collective benefit.</p>
-            <p><span class="font-bold text-slate-800">"Better Angels":</span> Lincoln's phrase for humanity's capacity for reason, compassion, and restraint over fear and appetite.</p>
-          </div>
-        </section>
+        <section><h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Primary Interviews</h3><ul class="space-y-3 text-sm text-slate-700"><li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm"><span class="font-bold block text-slate-900">Jon Meacham on The Late Show</span><span class="text-parchment-600 text-xs">January 15, 2026 · CBS</span></li><li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm"><span class="font-bold block text-slate-900">Meacham at Harvard Kennedy School</span><span class="text-parchment-600 text-xs">April 2025</span></li></ul></section>
+        <section><h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Primary Historical Sources</h3><ul class="space-y-3 text-sm text-slate-700"><li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm"><span class="font-bold block text-slate-900">Frederick Douglass</span><span class="text-parchment-600 text-xs">"What to the Slave is the Fourth of July?" (1852)</span><a href="https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july" target="_blank" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">Constitution Center ↗</a></li><li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm"><span class="font-bold block text-slate-900">Abraham Lincoln</span><span class="text-parchment-600 text-xs">First Inaugural Address (1861)</span><a href="https://avalon.law.yale.edu/19th_century/lincoln1.asp" target="_blank" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">Yale Avalon ↗</a></li><li class="bg-white/80 p-3 rounded-lg border border-parchment-400 shadow-sm"><span class="font-bold block text-slate-900">Robert F. Kennedy</span><span class="text-parchment-600 text-xs">Indianapolis Speech (1968)</span><a href="https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy/robert-f-kennedy-speeches/statement-on-assassination-of-martin-luther-king-jr-indianapolis-indiana-april-4-1968" target="_blank" class="text-amber-700 text-xs flex items-center gap-1 mt-1 hover:underline">JFK Library ↗</a></li></ul></section>
+        <section><h3 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Glossary</h3><div class="text-sm text-slate-700 space-y-3 bg-white/80 p-4 rounded-lg border border-parchment-400"><p><span class="font-bold text-slate-800">Semiquincentennial:</span> The 250th anniversary.</p><p><span class="font-bold text-slate-800">Norms:</span> Unwritten rules of conduct. Doing the right thing when the law doesn't force you to.</p><p><span class="font-bold text-slate-800">"Better Angels":</span> Lincoln's phrase for humanity's capacity for reason and restraint over fear.</p><p><span class="font-bold text-slate-800">"Interpreted as it ought to be":</span> Douglass's qualifier: reading the Constitution by its principles, not the framers' compromises.</p></div></section>
       </div>
     </div>
   </div>
 
   <script>
-    // === DATA ===
-    
     const healthCheckData = [
-      {
-        key: "norms",
-        title: "Norms & Guardrails",
-        blurb: "The unwritten rules that keep power restrained and politics in good faith.",
-        accent: { border: "border-l-amber-500", badge: "bg-amber-200 text-amber-900", ring: "ring-amber-400/60", iconBg: "bg-amber-100", iconColor: "text-amber-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>',
-        anchors: [
-          { score: 5, label: "Restraint expected, violations punished socially/politically" },
-          { score: 3, label: "Mixed, norm-breaking common but still contested" },
-          { score: 1, label: "Fragile, norms treated as optional or partisan" },
-          { score: 0, label: "Broken, anything legal is fair game, bad faith routine" },
-        ],
-        signals: [
-          "Leaders show restraint even when the law allows more",
-          "Public officials avoid conflicts of interest or recuse themselves",
-          "Losers accept outcomes without trying to delegitimize the system",
-        ],
-        then: "Post-Watergate reforms reinforced expectations of restraint, establishing oversight as a norm.",
-        nowPrompt: "Where do you see 'can' replacing 'should' in modern public life?",
-        counterweight: {
-          bestCase: "Norm fights are loud because accountability still exists, and scandals still cost people power.",
-          riskCase: "Repeated norm-breaking lowers the penalty; tomorrow's abuses become today's precedent.",
-          falsifier: "What concrete change would convince you restraint is strengthening or collapsing?"
-        },
-        primarySource: {
-          author: "Jon Meacham",
-          work: "The Late Show Interview",
-          year: "2026",
-          quote: "If I want your tie, I shouldn't just grab it even if I'm stronger. Norms are synonyms for doing the right thing when the law doesn't explicitly force you to.",
-          url: null,
-          connection: "Meacham's 'tie analogy' illustrates the social contract: power without restraint is not governance, it's domination."
-        }
-      },
-      {
-        key: "institutions",
-        title: "Institutions & Rule of Law",
-        blurb: "Whether courts, elections, and legislatures function independently.",
-        accent: { border: "border-l-indigo-600", badge: "bg-indigo-200 text-indigo-900", ring: "ring-indigo-400/60", iconBg: "bg-indigo-100", iconColor: "text-indigo-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>',
-        anchors: [
-          { score: 5, label: "Institutions constrain power reliably, compliance normal" },
-          { score: 3, label: "Institutions work, but trust and consistency are uneven" },
-          { score: 1, label: "Institutions openly pressured, bypassed, or weaponized" },
-          { score: 0, label: "Institutions hollowed out or ignored" },
-        ],
-        signals: [
-          "Election processes are trusted, audited, and accepted",
-          "Court rulings are followed, even when inconvenient",
-          "Enforcement is not obviously selective or partisan",
-        ],
-        then: "The peaceful transfer of power in 1801 (Jefferson) established that institutions outlast individuals.",
-        nowPrompt: "Do institutions today serve the public or the party in power?",
-        counterweight: {
-          bestCase: "The system bends but doesn't break; courts still rule against powerful interests.",
-          riskCase: "Institutions are being captured from the inside, maintaining form but losing function.",
-          falsifier: "If a major leader defied a court order, what would be the actual consequence?"
-        },
-        primarySource: {
-          author: "Frederick Douglass",
-          work: "What to the Slave is the Fourth of July?",
-          year: "1852",
-          quote: "Interpreted as it ought to be interpreted, the Constitution is a GLORIOUS LIBERTY DOCUMENT. Read its preamble, consider its purposes. Is slavery among them?",
-          url: "https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july",
-          connection: "Douglass rejected the view that the Constitution was pro-slavery. He saw institutions as tools that could be wielded for justice if properly interpreted. The question is who does the interpreting."
-        }
-      },
-      {
-        key: "trust",
-        title: "Civic Trust & Cohesion",
-        blurb: "Whether people believe they share a country with humans, not enemies.",
-        accent: { border: "border-l-teal-600", badge: "bg-teal-200 text-teal-900", ring: "ring-teal-400/60", iconBg: "bg-teal-100", iconColor: "text-teal-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>',
-        anchors: [
-          { score: 5, label: "Disagreement normal, dehumanization marginal" },
-          { score: 3, label: "High distrust, but coexistence still holds" },
-          { score: 1, label: "Us vs. Them dominates, compromise seen as shameful" },
-          { score: 0, label: "Society fragments into rival camps rejecting shared legitimacy" },
-        ],
-        signals: [
-          "Willingness to live with legitimate disagreement",
-          "Trust in neighbors, local institutions, and basic information",
-          "Cross-group cooperation exists in real life, not just nostalgia",
-        ],
-        then: "Lincoln appealed to shared memory as the glue holding the Union together, even on the brink of war.",
-        nowPrompt: "Is your neighbor an opponent to be convinced, or an enemy to be defeated?",
-        counterweight: {
-          bestCase: "Local communities are less polarized than national news suggests.",
-          riskCase: "Algorithms and sorting are creating separate realities that can't communicate.",
-          falsifier: "Can you name three major issues where you trust the 'other side's' good intentions?"
-        },
-        primarySource: {
-          author: "Abraham Lincoln",
-          work: "First Inaugural Address",
-          year: "1861",
-          quote: "We are not enemies, but friends. We must not be enemies. Though passion may have strained it must not break our bonds of affection.",
-          url: "https://avalon.law.yale.edu/19th_century/lincoln1.asp",
-          connection: "Lincoln's appeal to the 'better angels of our nature' assumed a shared identity worth preserving. When that assumption breaks down, what remains?"
-        }
-      },
-      {
-        key: "violence",
-        title: "Violence & Coercion Tolerance",
-        blurb: "How acceptable intimidation or political violence has become.",
-        accent: { border: "border-l-rose-700", badge: "bg-rose-200 text-rose-900", ring: "ring-rose-400/60", iconBg: "bg-rose-100", iconColor: "text-rose-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"/>',
-        anchors: [
-          { score: 5, label: "Violence universally condemned and punished" },
-          { score: 3, label: "Isolated incidents condemned, but rhetoric heats up" },
-          { score: 1, label: "Threats common, accountability selective, self-censor fear" },
-          { score: 0, label: "Violence becomes a political tool" },
-        ],
-        signals: [
-          "Threats against officials, judges, journalists, or poll workers",
-          "Political violence is excused, minimized, or celebrated",
-          "People self-censor out of fear of retribution",
-        ],
-        then: "1968: MLK's assassination sparked riots in 100+ cities. RFK was killed two months later. The violence of that year shocked the nation into a demand for order.",
-        nowPrompt: "Do we excuse violence when it comes from 'our side'?",
-        counterweight: {
-          bestCase: "Actual political violence remains rare compared to historical eras of unrest.",
-          riskCase: "The threat of violence is normalizing, chilling speech and participation.",
-          falsifier: "Does the condemnation of violence depend on who the victim is?"
-        },
-        primarySource: {
-          author: "Robert F. Kennedy",
-          work: "Indianapolis Speech",
-          year: "1968",
-          quote: "What we need in the United States is not division; what we need in the United States is not hatred; what we need in the United States is not violence or lawlessness; but love and wisdom, and compassion toward one another.",
-          url: "https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy/robert-f-kennedy-speeches/statement-on-assassination-of-martin-luther-king-jr-indianapolis-indiana-april-4-1968",
-          connection: "RFK spoke these words hours after MLK's assassination, to a crowd that hadn't yet heard the news. Indianapolis stayed calm that night while 100+ cities burned. Words can matter, or they can fail."
-        }
-      }
+      { key: "norms", title: "Norms & Guardrails", blurb: "The unwritten rules that keep power restrained and politics in good faith.", accent: { border: "border-l-amber-500", ring: "ring-amber-400/60", iconBg: "bg-amber-100", iconColor: "text-amber-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>', anchors: [{score:5,label:"Restraint expected, violations punished"},{score:3,label:"Mixed, norm-breaking contested"},{score:1,label:"Norms treated as optional"},{score:0,label:"Anything legal is fair game"}], signals: ["Leaders show restraint even when the law allows more","Officials avoid conflicts of interest","Losers accept outcomes without delegitimizing"], then: "Post-Watergate reforms reinforced expectations of restraint.", nowPrompt: "Where do you see 'can' replacing 'should' in modern public life?", counterweight: {bestCase:"Norm fights are loud because accountability exists.",riskCase:"Repeated norm-breaking lowers the penalty.",falsifier:"What change would convince you restraint is strengthening?"}, primarySource: {author:"Jon Meacham",work:"The Late Show",year:"2026",quote:"If I want your tie, I shouldn't just grab it even if I'm stronger. Norms are doing the right thing when the law doesn't force you to.",url:null,connection:"The 'tie analogy' illustrates the social contract: power without restraint is domination."}},
+      { key: "institutions", title: "Institutions & Rule of Law", blurb: "Whether courts, elections, and legislatures function independently.", accent: { border: "border-l-indigo-600", ring: "ring-indigo-400/60", iconBg: "bg-indigo-100", iconColor: "text-indigo-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>', anchors: [{score:5,label:"Institutions constrain power reliably"},{score:3,label:"Trust and consistency uneven"},{score:1,label:"Institutions pressured or weaponized"},{score:0,label:"Institutions hollowed out"}], signals: ["Elections trusted and accepted","Court rulings followed","Enforcement not selective"], then: "The 1801 transfer of power established institutions outlast individuals.", nowPrompt: "Do institutions serve the public or the party in power?", counterweight: {bestCase:"Courts still rule against powerful interests.",riskCase:"Institutions captured from inside.",falsifier:"If a leader defied a court order, what consequence?"}, primarySource: {author:"Frederick Douglass",work:"What to the Slave is the Fourth of July?",year:"1852",quote:"Interpreted as it ought to be interpreted, the Constitution is a GLORIOUS LIBERTY DOCUMENT.",url:"https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july",connection:"The qualifier is essential. Douglass broke with Garrison in 1851, choosing to see the Constitution as a tool for liberation if read by its principles. His hope was tactical, not naive.",contextNote:"Douglass held this view from 1851 until his death in 1895. It was his final position, arrived at through intellectual struggle."}},
+      { key: "trust", title: "Civic Trust & Cohesion", blurb: "Whether people believe they share a country with humans, not enemies.", accent: { border: "border-l-teal-600", ring: "ring-teal-400/60", iconBg: "bg-teal-100", iconColor: "text-teal-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>', anchors: [{score:5,label:"Disagreement normal, dehumanization marginal"},{score:3,label:"High distrust, coexistence holds"},{score:1,label:"Us vs. Them dominates"},{score:0,label:"Society fragments"}], signals: ["Willingness to live with disagreement","Trust in neighbors and information","Cross-group cooperation exists"], then: "Lincoln appealed to shared memory as glue for the Union.", nowPrompt: "Is your neighbor an opponent or an enemy?", counterweight: {bestCase:"Local communities less polarized than news suggests.",riskCase:"Algorithms creating separate realities.",falsifier:"Can you name issues where you trust the other side's intentions?"}, primarySource: {author:"Abraham Lincoln",work:"First Inaugural Address",year:"1861",quote:"We are not enemies, but friends. We must not be enemies.",url:"https://avalon.law.yale.edu/19th_century/lincoln1.asp",connection:"Lincoln assumed a shared identity worth preserving. When that breaks down, what remains?"}},
+      { key: "violence", title: "Violence & Coercion Tolerance", blurb: "How acceptable intimidation or political violence has become.", accent: { border: "border-l-rose-700", ring: "ring-rose-400/60", iconBg: "bg-rose-100", iconColor: "text-rose-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"/>', anchors: [{score:5,label:"Violence condemned and punished"},{score:3,label:"Isolated incidents condemned"},{score:1,label:"Threats common, accountability selective"},{score:0,label:"Violence becomes political tool"}], signals: ["Threats against officials or poll workers","Violence excused or celebrated","Self-censorship from fear"], then: "1968: MLK's assassination sparked riots in 100+ cities.", nowPrompt: "Do we excuse violence when it comes from 'our side'?", counterweight: {bestCase:"Political violence remains rare historically.",riskCase:"Threat of violence normalizing.",falsifier:"Does condemnation depend on who the victim is?"}, primarySource: {author:"Robert F. Kennedy",work:"Indianapolis Speech",year:"1968",quote:"What we need is not division; not hatred; not violence; but love and wisdom, and compassion toward one another.",url:"https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy/robert-f-kennedy-speeches/statement-on-assassination-of-martin-luther-king-jr-indianapolis-indiana-april-4-1968",connection:"RFK spoke hours after MLK's assassination. Indianapolis stayed calm while 100+ cities burned."}}
     ];
 
     const coreConceptsData = [
-      {
-        key: "mission",
-        title: "Mission Statement vs. User's Guide",
-        summary: "The Declaration of Independence is the 'Mission Statement' (the ideal of equality). The Constitution is the 'User's Guide' (the mechanics). Tension arises when the mechanics fail the mission.",
-        accent: { border: "border-l-amber-500", iconBg: "bg-amber-100", iconColor: "text-amber-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>',
-        source: {
-          author: "Jon Meacham",
-          work: "The Late Show",
-          year: "2026",
-          quote: "The first three words are the animating words of the Constitution. 'We the people.' The document is only as good as the people doing the voting, the people we vote into office.",
-          url: null
-        },
-        deeper: "Jefferson's Declaration laid out the 'why'; Madison's Constitution laid out the 'how.' But what happens when the process produces outcomes that violate the principle? This tension has driven every major reform movement in American history.",
-        connections: [
-          "The abolitionists split over this: Garrison rejected the Constitution, Douglass embraced it.",
-          "Civil rights marchers appealed to the Declaration's ideals against the Constitution's compromises.",
-          "Modern debates over judicial review often hinge on whether courts should enforce ideals or defer to process."
-        ]
-      },
-      {
-        key: "patriotism",
-        title: "Patriotism as an Idea",
-        summary: "Unlike nations defined by blood or soil, American patriotism is loyalty to an idea: the creed that 'all men are created equal.' Meacham: 'We are not here for geography.'",
-        accent: { border: "border-l-indigo-600", iconBg: "bg-indigo-100", iconColor: "text-indigo-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>',
-        source: {
-          author: "Jon Meacham",
-          work: "The Late Show",
-          year: "2026",
-          quote: "This is a country founded on an idea. Patriotism is loyalty to an idea, to a creed. We are not here for geography.",
-          url: null
-        },
-        deeper: "This is what Lincoln meant by 'the last best hope of earth.' The experiment isn't the land; it's the proposition. If the proposition fails, the justification for the nation dissolves.",
-        connections: [
-          "Immigrant nations like Australia and Canada share this quality, but America's founding documents made the creed explicit.",
-          "The 'idea' framing cuts both ways: it means the nation can be redeemed, but also that it can fail its own definition.",
-          "Critics argue the 'idea' was always a cover for material interests. Defenders argue the idea created space for reform."
-        ]
-      },
-      {
-        key: "soul",
-        title: "The Soul of America",
-        summary: "The American story is a constant battle between worst impulses (appetite, fear) and best instincts (hope, rule of law). 2026 is a litmus test for which side is winning.",
-        accent: { border: "border-l-teal-600", iconBg: "bg-teal-100", iconColor: "text-teal-700" },
-        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>',
-        source: {
-          author: "Abraham Lincoln (via Meacham)",
-          work: "First Inaugural Address",
-          year: "1861",
-          quote: "The mystic chords of memory, stretching from every battlefield and patriot grave to every living heart and hearthstone all over this broad land, will yet swell the chorus of the Union, when again touched, as surely they will be, by the better angels of our nature.",
-          url: "https://avalon.law.yale.edu/19th_century/lincoln1.asp"
-        },
-        deeper: "Meacham's 2018 book 'The Soul of America' argued this battle is cyclical. Fear periodically wins (the 1850s, the 1920s, the late 1960s), but hope has historically recovered. The question is whether the pattern holds.",
-        connections: [
-          "Lincoln's 'better angels' speech failed to prevent war. The words didn't work. And yet the framing endures.",
-          "Meacham sees 2026 as another test: 'We are at risk of being a generation that loses the ethos.'",
-          "The 'soul' framing is deliberately religious/moral. It rejects purely economic or institutional explanations."
-        ]
-      }
+      { key: "mission", title: "Mission Statement vs. User's Guide", summary: "The Declaration is the 'Mission Statement' (equality ideal). The Constitution is the 'User's Guide' (mechanics). Tension arises when mechanics fail the mission.", accent: { border: "border-l-amber-500", iconBg: "bg-amber-100", iconColor: "text-amber-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>', source: {author:"Jon Meacham",work:"The Late Show",year:"2026",quote:"'We the people.' The document is only as good as the people doing the voting.",url:null}, deeper: "Jefferson's Declaration laid out the 'why'; Madison's Constitution laid out the 'how.' But what happens when the process produces outcomes that violate the principle?", deeperSources: [{title:"Declaration of Independence (1776)",url:"https://www.archives.gov/founding-docs/declaration-transcript",note:"The original 'mission statement'"},{title:"The Federalist Papers",url:"https://avalon.law.yale.edu/subject_menus/fed.asp",note:"Madison, Hamilton, Jay on constitutional design"},{title:"Notes on the State of Virginia",url:"https://docsouth.unc.edu/southlit/jefferson/jefferson.html",note:"Jefferson on slavery's contradiction"}], connections: [{text:"The abolitionists split: Garrison rejected the Constitution, Douglass embraced it.",url:"https://www.pbs.org/wgbh/aia/part4/4p1561.html"},{text:"Civil rights marchers appealed to Declaration ideals against Constitution compromises.",url:"https://www.archives.gov/press/exhibits/dream-speech.pdf"},{text:"Modern judicial review debates: enforce ideals or defer to process?",url:"https://constitutioncenter.org/the-constitution/articles/article-iii"}]},
+      { key: "patriotism", title: "Patriotism as an Idea", summary: "Unlike nations defined by blood or soil, American patriotism is loyalty to an idea: 'all men are created equal.' Meacham: 'We are not here for geography.'", accent: { border: "border-l-indigo-600", iconBg: "bg-indigo-100", iconColor: "text-indigo-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>', source: {author:"Jon Meacham",work:"The Late Show",year:"2026",quote:"This is a country founded on an idea. Patriotism is loyalty to an idea, to a creed.",url:null}, deeper: "Lincoln called America 'the last best hope of earth.' The experiment isn't the land; it's the proposition. If the proposition fails, the justification dissolves.", deeperSources: [{title:"Lincoln's Gettysburg Address (1863)",url:"https://www.archives.gov/exhibits/featured-documents/gettysburg-address",note:"'Dedicated to the proposition that all men are created equal'"},{title:"American Creed concept",url:"https://www.britannica.com/topic/American-Creed",note:"Gunnar Myrdal's 1944 analysis"},{title:"Creedal vs. Ethnic Nationalism",url:"https://plato.stanford.edu/entries/nationalism/",note:"Stanford Encyclopedia of Philosophy"}], connections: [{text:"Immigrant nations share this quality, but America's documents made the creed explicit.",url:"https://www.uscis.gov/citizenship/learn-about-citizenship/the-naturalization-interview-and-test"},{text:"The 'idea' framing cuts both ways: redeemable, but can fail its own definition.",url:null},{text:"Critics argue the 'idea' covered material interests. Defenders say it created space for reform.",url:"https://www.theatlantic.com/magazine/archive/2019/10/when-the-constitution-was-illegal/596525/"}]},
+      { key: "soul", title: "The Soul of America", summary: "The American story is a constant battle between worst impulses (appetite, fear) and best instincts (hope, law). 2026 tests which side wins.", accent: { border: "border-l-teal-600", iconBg: "bg-teal-100", iconColor: "text-teal-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>', source: {author:"Lincoln (via Meacham)",work:"First Inaugural",year:"1861",quote:"The mystic chords of memory... will yet swell the chorus of the Union, when touched by the better angels of our nature.",url:"https://avalon.law.yale.edu/19th_century/lincoln1.asp"}, deeper: "Meacham's 2018 book argued this battle is cyclical. Fear wins periodically (1850s, 1920s, 1960s), but hope has recovered. Does the pattern hold?", deeperSources: [{title:"The Soul of America (2018)",url:"https://www.penguinrandomhouse.com/books/547855/the-soul-of-america-by-jon-meacham/",note:"Meacham's earlier book on this theme"},{title:"Lincoln's First Inaugural",url:"https://avalon.law.yale.edu/19th_century/lincoln1.asp",note:"The 'better angels' speech"},{title:"Fear Itself: The New Deal (2013)",url:"https://wwnorton.com/books/Fear-Itself/",note:"Ira Katznelson on 1930s fears"}], connections: [{text:"Lincoln's 'better angels' failed to prevent war. The words didn't work. Yet the framing endures.",url:"https://avalon.law.yale.edu/19th_century/lincoln1.asp"},{text:"Meacham: 'We are at risk of being the generation that loses the ethos.'",url:null},{text:"The 'soul' framing is religious/moral, rejecting purely economic explanations.",url:null}]},
+      { key: "douglass-turn", title: "Douglass's Strategic Turn", summary: "Douglass didn't always view the Constitution as a liberty document. His 1851 reversal was deliberate and tactical, not naive.", accent: { border: "border-l-rose-600", iconBg: "bg-rose-100", iconColor: "text-rose-700" }, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>', source: {author:"Frederick Douglass",work:"Is the Constitution Pro-Slavery?",year:"1860",quote:"The Federal Government was never, in its essence, anything but an anti-slavery government.",url:"https://rbscp.lib.rochester.edu/4398"}, deeper: "From 1838-1851, Douglass aligned with Garrison, viewing the Constitution as a 'covenant with death.' In 1851, influenced by Spooner and Gerrit Smith, he reversed: the text contained no explicit warrant for slavery.", deeperSources: [{title:"David Blight: Prophet of Freedom",url:"https://www.simonandschuster.com/books/Frederick-Douglass/David-W-Blight/9781416590323",note:"Pulitzer-winning biography on his evolution"},{title:"Lysander Spooner's Unconstitutionality of Slavery",url:"https://oll.libertyfund.org/titles/spooner-the-unconstitutionality-of-slavery-1860",note:"Influenced Douglass's textual reading"},{title:"Douglass's break with Garrison",url:"https://www.pbs.org/wgbh/aia/part4/4p1539.html",note:"The 1851 public split"}], connections: [{text:"'Interpreted as it ought to be' is the whole argument: principles over framers' intent.",url:"https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"},{text:"His hope was conditional, earned through struggle. It allowed fighting within the system.",url:null},{text:"This strengthens Meacham's fragility theme: American hope requires active reinterpretation.",url:null}]}
     ];
 
     const anthologyArgumentData = [
-      {
-        title: '"Armed Against Despair"',
-        meacham: "Meacham argues that knowing history prevents despair. Not because the past was better, but because it shows survival through worse.",
-        source: "Douglass, 1852: 'I for one do not despair of this republic.'",
-        tension: "Is historical optimism earned, or naive? Garrison called the Constitution 'a covenant with death.' Douglass disagreed. Who was right?",
-        url: "https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"
-      },
-      {
-        title: '"Contentious Citizenship"',
-        meacham: "Conflict is inherent, not aberrant. The anthology shows tensions that 'rise and fall'; never permanently resolved.",
-        source: "The book spans 1619 to present, tracking clashes over 'liberty and slavery, inclusion and exclusion.'",
-        tension: "Is there a difference between productive conflict (debate within shared rules) and destructive conflict (war over the rules themselves)?",
-        url: null
-      },
-      {
-        title: '"The Long Shadow"',
-        meacham: "At Harvard, 2025: 'We have not dealt with it, and we live in the extraordinarily long shadow not just of Appomattox, but of Reconstruction.'",
-        source: "Edward Pollard, 1866, coined 'The Lost Cause': 'Though we have lost the war, we have not lost the fight for the principle.'",
-        tension: "How do narratives of the past become weapons in the present? Who controls the story of what America is?",
-        url: null
-      }
+      { title: '"Armed Against Despair"', meacham: "Knowing history prevents despair. Not because the past was better, but because it shows survival through worse.", source: "Douglass, 1852: 'I do not despair of this republic.'", tension: "Is historical optimism earned, or naive? Does it matter that Douglass once agreed with Garrison before changing his mind?", url: "https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july" },
+      { title: '"Contentious Citizenship"', meacham: "Conflict is inherent, not aberrant. The anthology shows tensions that rise and fall, never permanently resolved.", source: "The book spans 1619 to present, tracking 'liberty and slavery, inclusion and exclusion.'", tension: "Is there a difference between productive conflict (within shared rules) and destructive conflict (over the rules)?", url: null },
+      { title: '"The Long Shadow"', meacham: "Harvard, 2025: 'We live in the extraordinarily long shadow not just of Appomattox, but of Reconstruction.'", source: "Pollard, 1866: 'Though we have lost the war, we have not lost the fight for the principle.'", tension: "How do narratives of the past become weapons in the present? Who controls the story?", url: null }
     ];
 
     const discussionData = [
-      {
-        question: "Is America at 250 more like 1861 or 1968?",
-        teaser: "Lincoln faced secession. LBJ faced moral uprising. What's the nature of 2026's crisis?",
-        context: "In 1861, seven states had seceded before Lincoln took office: a structural fracture of the Union itself. In 1968, the crisis was moral. The Vietnam War's Tet Offensive eroded public trust; MLK and RFK were assassinated within two months; riots erupted in over 100 cities. LBJ withdrew from the race. Structural crises threaten the framework of government; moral crises threaten the soul of the society within that framework.",
-        source: {
-          author: "National Archives",
-          year: "2018",
-          quote: "1968 was a turning point in U.S. history, a year of triumphs and tragedies, social and political upheavals, that forever changed our country.",
-          url: "https://www.archives.gov/news/topics/1968-a-year-of-turmoil-and-change"
-        },
-        connections: [
-          "Are today's divisions about the rules of the game (structural), or about what the game should be for (moral)?",
-          "1861 required a war to resolve. 1968 required a generation. What would resolution look like now?",
-          "Can a crisis be both structural AND moral simultaneously? What happens when the two reinforce each other?"
-        ]
-      },
-      {
-        question: "Why did Douglass call the Constitution a 'glorious liberty document' despite slavery?",
-        teaser: "His mentor Garrison called it 'a covenant with death.' Douglass disagreed. Why?",
-        context: "William Lloyd Garrison, the leading abolitionist, burned copies of the Constitution and called for the North to secede from the slave South. Douglass initially agreed. But by 1852, Douglass had changed his mind: he argued the Constitution's text never mentions slavery, and its principles ('We the People,' 'secure the Blessings of Liberty') were inherently antislavery. The document's failure was in execution, not design.",
-        source: {
-          author: "Frederick Douglass",
-          year: "1852",
-          quote: "In that instrument I hold there is neither warrant, license, nor sanction of the hateful thing; but, interpreted as it ought to be interpreted, the Constitution is a GLORIOUS LIBERTY DOCUMENT.",
-          url: "https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"
-        },
-        connections: [
-          "Is the Constitution's potential more important than its failures? Who gets to decide?",
-          "Douglass bet on interpretation. Garrison bet on rejection. Which strategy is more effective for change?",
-          "Does calling a flawed document 'glorious' enable reform, or excuse ongoing injustice?"
-        ]
-      },
-      {
-        question: "The 'Tie' Analogy: What is the difference between 'Can' and 'Should'?",
-        teaser: "Meacham: 'If I want your tie, I shouldn't just grab it even if I'm stronger.'",
-        context: "Meacham uses this metaphor to illustrate the social contract. The law may not explicitly forbid an action, but norms (unwritten rules of restraint) keep society functional. When leaders confuse legal permission with moral permission, they begin dismantling the trust that holds institutions together. The question is whether norms have binding force without legal enforcement.",
-        source: {
-          author: "Jon Meacham",
-          year: "2026",
-          quote: "Norms are synonyms for doing the right thing when the law doesn't explicitly force you to. The crisis occurs when leaders abandon norms and only respect the literal letter of the law to seize power.",
-          url: null
-        },
-        connections: [
-          "Can you think of examples where someone did something legal but clearly wrong?",
-          "What enforces norms if not the law? Social pressure? Shame? Elections? Nothing?",
-          "If norms are 'optional,' are they really norms at all, or just preferences of the powerful?"
-        ]
-      },
-      {
-        question: "Mission Statement vs. User's Guide: Which matters more in 2026?",
-        teaser: "The Declaration says WHY. The Constitution says HOW. What happens when they conflict?",
-        context: "Meacham distinguishes the founding documents: the Declaration of Independence is the 'Mission Statement' (the ideal of equality), while the Constitution is the 'User's Guide' (the mechanics of governance). Tension arises when the mechanics fail the mission, when legal processes produce outcomes that violate the stated ideals.",
-        source: {
-          author: "Jon Meacham",
-          year: "2026",
-          quote: "This is a country founded on an idea. Patriotism is loyalty to an idea, to a creed: that all men are created equal. We are not here for geography.",
-          url: null
-        },
-        connections: [
-          "When the Constitution permits something the Declaration would condemn, which wins?",
-          "Is it possible to be 'constitutional' but 'un-American'? What would that look like?",
-          "Modern movements often appeal to ideals over process. Is that dangerous, or necessary?"
-        ]
-      },
-      {
-        question: "Meacham claims we are in a 'Moral Crisis.' Do you agree with his definition?",
-        teaser: "He defines it as choosing 'appetite' over 'constitutional order.' Is that accurate?",
-        context: "Meacham argues the crisis is moral because citizens are putting immediate self-interest ahead of the collective framework. This echoes Lincoln's framing of 'appetite and ambition' vs. 'better angels.' But critics might argue the real crisis is structural (institutional capture), economic (inequality), or informational (misinformation). The diagnosis shapes the prescription.",
-        source: {
-          author: "Jon Meacham",
-          year: "2026",
-          quote: "I think we are in a moral crisis. I think that too many of us have decided to put our own interests ahead of a constitutional order that is based on a rule of law.",
-          url: null
-        },
-        connections: [
-          "Is 'moral crisis' the right frame? What gets obscured if we call it structural or economic instead?",
-          "Can institutions fix moral failures? Can moral renewal happen without institutional reform?",
-          "If the crisis is moral, who bears responsibility: leaders, citizens, or both equally?"
-        ]
-      }
+      { question: "Is America at 250 more like 1861 or 1968?", teaser: "Lincoln faced secession. LBJ faced moral uprising. What's the nature of 2026's crisis?", context: "In 1861, seven states had seceded: a structural fracture. In 1968, the crisis was moral: Tet eroded trust; MLK and RFK were assassinated; riots in 100+ cities. Structural crises threaten government framework; moral crises threaten the society's soul.", source: {author:"National Archives",year:"2018",quote:"1968 was a turning point, a year of triumphs and tragedies that forever changed our country.",url:"https://www.archives.gov/news/topics/1968-a-year-of-turmoil-and-change"}, connections: ["Are today's divisions about rules (structural) or purpose (moral)?","1861 required war. 1968 required a generation. What would resolution look like now?","Can a crisis be both? What happens when they reinforce each other?"] },
+      { question: "Why did Douglass call the Constitution 'glorious' despite slavery?", teaser: "Garrison called it 'a covenant with death.' Douglass once agreed, then changed. Why?", context: "Garrison burned the Constitution and called for Northern secession. Douglass agreed (1838-1851). By 1851, he broke with Garrison: the text never mentions slavery, and its principles are inherently antislavery. The failure was execution, not design. The qualifier 'interpreted as it ought to be' is essential: potential under principled reading, not framers' intent.", source: {author:"Frederick Douglass",year:"1852",quote:"Interpreted as it ought to be interpreted, the Constitution is a GLORIOUS LIBERTY DOCUMENT.",url:"https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"}, connections: ["Is 'interpreted as it ought to be' a loophole or a principled stance?","Douglass bet on interpretation. Garrison bet on rejection. Which strategy works?","If hope was strategy (more effective than disunion), is it more or less credible?","Does calling a flawed document 'glorious' enable reform or excuse injustice?"] },
+      { question: "The 'Tie' Analogy: 'Can' vs. 'Should'", teaser: "Meacham: 'If I want your tie, I shouldn't just grab it even if I'm stronger.'", context: "The law may not forbid an action, but norms keep society functional. When leaders confuse legal permission with moral permission, they dismantle trust.", source: {author:"Jon Meacham",year:"2026",quote:"Norms are doing the right thing when the law doesn't force you to. The crisis is when leaders only respect the literal letter of law.",url:null}, connections: ["Examples of something legal but clearly wrong?","What enforces norms? Social pressure? Shame? Elections?","If norms are 'optional,' are they really norms?"] },
+      { question: "Mission Statement vs. User's Guide: Which matters more?", teaser: "Declaration says WHY. Constitution says HOW. What when they conflict?", context: "Meacham distinguishes: Declaration is the 'Mission Statement' (equality ideal); Constitution is 'User's Guide' (mechanics). Tension when mechanics fail the mission.", source: {author:"Jon Meacham",year:"2026",quote:"Patriotism is loyalty to an idea, to a creed: all men are created equal. We are not here for geography.",url:null}, connections: ["When Constitution permits what Declaration condemns, which wins?","Can you be 'constitutional' but 'un-American'?","Movements appeal to ideals over process. Dangerous or necessary?"] },
+      { question: "Are we in a 'Moral Crisis'? Is that the right frame?", teaser: "Meacham: choosing 'appetite' over 'constitutional order.' Accurate?", context: "Meacham argues the crisis is moral: self-interest over collective framework. Echoes Lincoln's 'appetite vs. better angels.' Critics might call it structural, economic, or informational. The diagnosis shapes the prescription.", source: {author:"Jon Meacham",year:"2026",quote:"Too many of us have put our own interests ahead of a constitutional order based on rule of law.",url:null}, connections: ["Is 'moral crisis' the right frame? What's obscured by structural/economic framing?","Can institutions fix moral failures?","Who bears responsibility: leaders, citizens, or both?"] }
     ];
 
     const anthologyTimelineData = [
-      {
-        year: 1619,
-        title: "The First Enslaved Africans Arrive",
-        teaser: "The '1619 moment' that Meacham's anthology begins with.",
-        description: "A ship carrying '20 and odd' enslaved Africans arrived at Point Comfort, Virginia: the beginning of chattel slavery in English North America. This moment marks the start of America's 'original sin,' the tension between liberty and bondage that would define centuries of struggle.",
-        quote: null,
-        quoteAuthor: null,
-        relevance: "Every debate about race, equality, and belonging in America traces back to this arrival. The 250th anniversary asks: have we reckoned with this beginning?",
-        url: "https://www.nps.gov/articles/african-americans-at-jamestown.htm"
-      },
-      {
-        year: 1776,
-        title: "The Declaration of Independence",
-        teaser: "The 'Mission Statement' of the American experiment.",
-        description: "Thomas Jefferson's assertion that 'all men are created equal' established the aspirational creed of the nation, even as Jefferson himself enslaved over 600 people in his lifetime. The Declaration is the promise; American history is the story of who gets included in 'all men.'",
-        quote: "We hold these truths to be self-evident, that all men are created equal.",
-        quoteAuthor: "Thomas Jefferson",
-        relevance: "Meacham calls the Declaration the 'Mission Statement.' In 2026, the question is whether the mission still commands loyalty, or has become an empty slogan.",
-        url: "https://www.archives.gov/founding-docs/declaration-transcript"
-      },
-      {
-        year: 1787,
-        title: "The Constitution Ratified",
-        teaser: "The 'User's Guide': mechanics of self-governance.",
-        description: "The Constitution created the framework for republican government but included compromises with slavery (the three-fifths clause, the fugitive slave clause). It established checks and balances but left enforcement to future generations.",
-        quote: "We the People of the United States, in Order to form a more perfect Union...",
-        quoteAuthor: "Preamble to the Constitution",
-        relevance: "The Constitution's genius is its adaptability; its flaw is that adaptation requires political will. What happens when that will fractures?",
-        url: "https://constitutioncenter.org/the-constitution"
-      },
-      {
-        year: 1852,
-        title: "Douglass's Fourth of July Speech",
-        teaser: "'What to the Slave is the Fourth of July?'",
-        description: "Frederick Douglass delivered perhaps the greatest abolitionist speech in American history, excoriating the nation's hypocrisy while affirming the Constitution's antislavery potential. He rejected despair: 'I do not despair of this republic.'",
-        quote: "Interpreted as it ought to be interpreted, the Constitution is a GLORIOUS LIBERTY DOCUMENT.",
-        quoteAuthor: "Frederick Douglass",
-        relevance: "Douglass modeled 'contentious citizenship': fierce critique paired with faith in the system's capacity for redemption. Is that balance still possible?",
-        url: "https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"
-      },
-      {
-        year: 1861,
-        title: "Lincoln's First Inaugural",
-        teaser: "'The better angels of our nature.'",
-        description: "Seven states had already seceded. Lincoln appealed to shared memory and mutual affection to hold the Union together. It didn't work; the war came anyway. But his framing of the conflict between appetite and better angels endures.",
-        quote: "We must not be enemies. Though passion may have strained it must not break our bonds of affection.",
-        quoteAuthor: "Abraham Lincoln",
-        relevance: "Lincoln's appeal assumed a shared identity worth preserving. In 2026, is that assumption still valid, or has it become nostalgic mythology?",
-        url: "https://avalon.law.yale.edu/19th_century/lincoln1.asp"
-      },
-      {
-        year: 1865,
-        title: "The 13th Amendment",
-        teaser: "Slavery abolished, but the shadow remains.",
-        description: "The 13th Amendment formally ended chattel slavery, but Reconstruction's promises were betrayed. Meacham notes at Harvard: 'We live in the extraordinarily long shadow not just of Appomattox, but of Reconstruction.'",
-        quote: null,
-        quoteAuthor: null,
-        relevance: "The amendment shows that change is possible. Its aftermath shows that legal change without cultural change is incomplete.",
-        url: "https://www.archives.gov/historical-docs/13th-amendment"
-      },
-      {
-        year: 1963,
-        title: "The March on Washington",
-        teaser: "'I Have a Dream': the promissory note metaphor.",
-        description: "Martin Luther King Jr. framed civil rights as America cashing a 'promissory note' written in the Declaration. The March brought 250,000 people to the Lincoln Memorial and pressured passage of the Civil Rights Act.",
-        quote: "America has given the Negro people a bad check, a check which has come back marked 'insufficient funds.'",
-        quoteAuthor: "Martin Luther King Jr.",
-        relevance: "King used the founders' language against their heirs. The strategy assumes the language still has moral authority. Does it?",
-        url: "https://www.archives.gov/press/exhibits/dream-speech.pdf"
-      },
-      {
-        year: 1968,
-        title: "The Year Everything Broke",
-        teaser: "Tet, assassinations, riots, and LBJ's withdrawal.",
-        description: "The Tet Offensive shattered confidence in Vietnam. MLK was assassinated April 4; riots erupted in 100+ cities. RFK was killed June 5. LBJ withdrew from the race. The Democratic Convention in Chicago turned violent. The moral fabric frayed.",
-        quote: "What we need in the United States is not division; what we need is not hatred; what we need is not violence or lawlessness; but love and wisdom, and compassion toward one another.",
-        quoteAuthor: "Robert F. Kennedy, April 4, 1968",
-        relevance: "1968 was a moral crisis, not a structural one. The Union held, but trust collapsed. Is 2026 more like 1968 than 1861?",
-        url: "https://www.archives.gov/news/topics/1968-a-year-of-turmoil-and-change"
-      },
-      {
-        year: 2026,
-        title: "The Semiquincentennial",
-        teaser: "America at 250: audit or celebration?",
-        description: "The United States marks its 250th birthday amid what Meacham calls a 'moral crisis.' The anniversary offers a choice: nostalgic celebration of founding mythology, or honest reckoning with the gap between ideals and realities.",
-        quote: "One thing we have to remember, all of us, is that there is nothing guaranteed about America making it to tomorrow. This is a fragile experiment.",
-        quoteAuthor: "Jon Meacham, 2026",
-        relevance: "This is the moment you're living in. What will the future say about how you used it?",
-        url: null
-      }
+      { year: 1619, title: "The First Enslaved Africans Arrive", teaser: "The '1619 moment' that begins Meacham's anthology.", description: "A ship carrying '20 and odd' enslaved Africans arrived at Point Comfort, Virginia: the beginning of chattel slavery in English North America.", keyFigures: ["John Rolfe (recorded the arrival)","The unnamed enslaved Africans"], consequences: "Established the economic model of plantation slavery that would shape Southern society for 246 years.", furtherReading: [{title:"1619 Project",url:"https://www.nytimes.com/interactive/2019/08/14/magazine/1619-america-slavery.html"},{title:"NPS: Africans at Jamestown",url:"https://www.nps.gov/articles/african-americans-at-jamestown.htm"}], relevance: "Every debate about race, equality, and belonging traces back to this moment." },
+      { year: 1776, title: "The Declaration of Independence", teaser: "The 'Mission Statement' of the American experiment.", description: "Jefferson's assertion that 'all men are created equal' established the creed, even as he enslaved 600+ people.", keyFigures: ["Thomas Jefferson (author)","Benjamin Franklin, John Adams (editors)","The enslaved people at Monticello"], consequences: "Created the aspirational standard against which all American progress is measured.", furtherReading: [{title:"Declaration (National Archives)",url:"https://www.archives.gov/founding-docs/declaration-transcript"},{title:"Rough Draft with edits",url:"https://www.loc.gov/exhibits/declara/ruffdrft.html"}], relevance: "Meacham calls it the 'Mission Statement.' Does the mission still command loyalty?" },
+      { year: 1787, title: "The Constitution Ratified", teaser: "The 'User's Guide': mechanics of self-governance.", description: "Created the framework for republican government but included compromises with slavery (three-fifths clause, fugitive slave clause).", keyFigures: ["James Madison ('Father of the Constitution')","Gouverneur Morris (wrote the Preamble)","The 55 delegates (39 signed)"], consequences: "Established checks and balances but left enforcement to future generations.", furtherReading: [{title:"Constitution (National Archives)",url:"https://www.archives.gov/founding-docs/constitution-transcript"},{title:"Federalist Papers",url:"https://avalon.law.yale.edu/subject_menus/fed.asp"}], relevance: "The Constitution's genius is adaptability; its flaw is that adaptation requires will." },
+      { year: 1831, title: "The Garrisonian Alternative", teaser: "Garrison: the Constitution is 'a covenant with death.'", description: "William Lloyd Garrison launched The Liberator, demanding immediate abolition. He publicly burned the Constitution. For 13 years, Douglass agreed.", keyFigures: ["William Lloyd Garrison (founder)","Nat Turner (rebellion same year)","Frederick Douglass (disciple until 1851)"], consequences: "Established the moral absolutist position: reject the corrupt system entirely.", furtherReading: [{title:"The Liberator archives",url:"https://fair-use.org/the-liberator/"},{title:"PBS: Garrison biography",url:"https://www.pbs.org/wgbh/aia/part4/4p1561.html"}], relevance: "Garrison's position was credible. Douglass's later view was a choice against this alternative." },
+      { year: 1852, title: "Douglass's Fourth of July Speech", teaser: "'What to the Slave is the Fourth of July?'", description: "Douglass excoriated hypocrisy while affirming constitutional potential. The qualifier 'interpreted as it ought to be' is often omitted but essential.", keyFigures: ["Frederick Douglass","The Rochester Ladies' Anti-Slavery Society (invited him)"], consequences: "Modeled 'contentious citizenship': fierce critique plus conditional faith.", furtherReading: [{title:"Full speech text",url:"https://constitutioncenter.org/declaration/primary-sources/what-to-the-slave-is-the-fourth-of-july"},{title:"Audio reading",url:"https://www.youtube.com/watch?v=O0baE_CtRtU"}], relevance: "His hope was earned through struggle, not given. Is that balance still possible?" },
+      { year: 1861, title: "Lincoln's First Inaugural", teaser: "'The better angels of our nature.'", description: "Seven states had seceded. Lincoln appealed to shared memory. It didn't work; war came anyway.", keyFigures: ["Abraham Lincoln","William Seward (suggested 'better angels')","The seven seceded states"], consequences: "The appeal failed to prevent war. 620,000 died. And yet the framing endures.", furtherReading: [{title:"Full text (Yale)",url:"https://avalon.law.yale.edu/19th_century/lincoln1.asp"},{title:"Lincoln's drafts",url:"https://www.loc.gov/collections/abraham-lincoln-papers/"}], relevance: "Lincoln assumed shared identity worth preserving. Is that assumption still valid?" },
+      { year: 1865, title: "The 13th Amendment", teaser: "Slavery abolished. But the shadow remains.", description: "Formally ended chattel slavery, but Reconstruction's promises were betrayed.", keyFigures: ["Lincoln (assassinated April 14)","Thaddeus Stevens (Radical Republican)","Andrew Johnson (undermined Reconstruction)"], consequences: "Legal change without cultural change proved incomplete.", furtherReading: [{title:"13th Amendment (Archives)",url:"https://www.archives.gov/historical-docs/13th-amendment"},{title:"Reconstruction (History.com)",url:"https://www.history.com/topics/american-civil-war/reconstruction"}], relevance: "We live in the shadow not just of Appomattox, but of Reconstruction's failure." },
+      { year: 1963, title: "The March on Washington", teaser: "'I Have a Dream': the promissory note.", description: "250,000 people at the Lincoln Memorial. King framed civil rights as cashing the Declaration's 'promissory note.'", keyFigures: ["Martin Luther King Jr.","John Lewis (youngest speaker)","A. Philip Randolph (organizer)"], consequences: "Pressured passage of Civil Rights Act (1964) and Voting Rights Act (1965).", furtherReading: [{title:"'Dream' speech (Archives)",url:"https://www.archives.gov/press/exhibits/dream-speech.pdf"},{title:"March footage",url:"https://www.youtube.com/watch?v=smEqnnklfYs"}], relevance: "King used founders' language against their heirs. Does it still have moral authority?" },
+      { year: 1968, title: "The Year Everything Broke", teaser: "Tet. Assassinations. Riots. LBJ withdraws.", description: "Tet Offensive shattered Vietnam confidence. MLK killed April 4; riots in 100+ cities. RFK killed June 5. Chicago convention chaos.", keyFigures: ["Martin Luther King Jr. (assassinated)","Robert F. Kennedy (assassinated)","LBJ (withdrew from race)"], consequences: "Moral crisis, not structural. The Union held, but trust collapsed.", furtherReading: [{title:"1968: Year of Turmoil (Archives)",url:"https://www.archives.gov/news/topics/1968-a-year-of-turmoil-and-change"},{title:"RFK Indianapolis speech",url:"https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy/robert-f-kennedy-speeches/statement-on-assassination-of-martin-luther-king-jr-indianapolis-indiana-april-4-1968"}], relevance: "Is 2026 more like 1968 than 1861? Moral crisis vs. structural fracture?" },
+      { year: 2026, title: "The Semiquincentennial", teaser: "America at 250: audit or celebration?", description: "The United States marks 250 years amid what Meacham calls a 'moral crisis.' Nostalgic celebration, or honest reckoning?", keyFigures: ["You","Your representatives","The historians who will judge this moment"], consequences: "Unknown. That's the point.", furtherReading: [{title:"America250 official site",url:"https://www.america250.org/"},{title:"Meacham: American Struggle",url:"https://www.penguinrandomhouse.com/books/733910/american-struggle-by-jon-meacham/"}], relevance: "This is your moment. What will the future say about how you used it?" }
     ];
 
-    // === STATE ===
-    let openHealthCheck = null;
-    let openHealthCheckSource = {};
-    let openCoreConcept = null;
-    let openAnthologyArgument = {};
-    let discussionLayers = {};
-    let openTimelineEvent = null;
-
-    // === RENDER FUNCTIONS ===
+    let openHealthCheck = null, openHealthCheckSource = {}, openCoreConcept = null, openCoreConceptDeeper = {}, openAnthologyArgument = {}, discussionLayers = {}, openTimelineEvent = null;
 
     function renderHealthCheck() {
-      const container = document.getElementById('health-check-container');
-      container.innerHTML = healthCheckData.map(item => {
-        const isOpen = openHealthCheck === item.key;
-        const sourceOpen = openHealthCheckSource[item.key];
-        
-        return `
-          <div class="bg-white/90 backdrop-blur-sm rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden transition-all duration-300 border-l-4 ${item.accent.border} ${isOpen ? 'ring-2 ' + item.accent.ring : ''} hover:-translate-y-0.5 hover:shadow-lg">
-            <button onclick="toggleHealthCheck('${item.key}')" class="w-full text-left p-5 flex items-start justify-between gap-4 hover:bg-parchment-100/50 transition-colors">
-              <div class="flex gap-4">
-                <div class="p-3 rounded-full h-fit transition-colors ${item.accent.iconBg}">
-                  <svg class="w-6 h-6 ${item.accent.iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${item.icon}</svg>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-slate-900">${item.title}</h3>
-                  <p class="text-parchment-700 text-sm mt-1 pr-4">${item.blurb}</p>
-                </div>
-              </div>
-              <svg class="w-5 h-5 opacity-50 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            
-            ${isOpen ? `
-              <div class="px-5 pb-5 animate-fade-in">
-                <div class="mt-2 pt-4 border-t border-parchment-300 space-y-6">
-                  
-                  <div>
-                    <h4 class="font-bold text-xs text-parchment-500 uppercase tracking-wider mb-2">Signals to look for</h4>
-                    <ul class="space-y-2">
-                      ${item.signals.map(s => `
-                        <li class="flex items-start gap-2 text-sm text-slate-700 bg-parchment-100 p-2 rounded">
-                          <span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${item.accent.iconColor.replace('text-', 'bg-')}"></span>
-                          ${s}
-                        </li>
-                      `).join('')}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 class="font-bold text-xs text-parchment-500 uppercase tracking-wider mb-2">0-5 Health Anchors</h4>
-                    <div class="space-y-1">
-                      ${item.anchors.map(a => `
-                        <div class="flex gap-3 items-baseline text-sm">
-                          <span class="w-8 text-center font-bold rounded py-0.5 text-xs ${
-                            a.score === 5 ? 'bg-emerald-200 text-emerald-900' : 
-                            a.score === 3 ? 'bg-amber-200 text-amber-900' : 
-                            a.score === 1 ? 'bg-orange-200 text-orange-900' : 
-                            'bg-rose-200 text-rose-900'
-                          }">${a.score}</span>
-                          <span class="text-slate-700">${a.label}</span>
-                        </div>
-                      `).join('')}
-                    </div>
-                  </div>
-
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div class="bg-parchment-200/80 p-4 rounded-lg border border-parchment-300">
-                      <h4 class="font-bold text-parchment-800 text-sm mb-1 flex items-center gap-2">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        Then
-                      </h4>
-                      <p class="text-sm text-parchment-700 italic">${item.then}</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-amber-200 to-orange-200/50 p-4 rounded-lg border border-amber-300/60">
-                      <h4 class="font-bold text-amber-900 text-sm mb-1 flex items-center gap-2">
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        Now Prompt
-                      </h4>
-                      <p class="text-sm text-amber-900">${item.nowPrompt}</p>
-                    </div>
-                  </div>
-
-                  <div class="bg-gradient-to-br from-slate-100 to-indigo-100/30 p-4 rounded-lg border border-indigo-200/40">
-                    <h4 class="font-bold text-indigo-900 text-sm mb-3">Counterweight & Falsification</h4>
-                    <div class="space-y-2 text-sm">
-                      <p class="text-slate-700"><span class="font-bold text-indigo-800">Best case:</span> ${item.counterweight.bestCase}</p>
-                      <p class="text-slate-700"><span class="font-bold text-indigo-800">Risk case:</span> ${item.counterweight.riskCase}</p>
-                      <p class="text-slate-700 pt-2 mt-2 border-t border-indigo-200 italic"><span class="font-bold text-indigo-800 not-italic">Falsifier:</span> "${item.counterweight.falsifier}"</p>
-                    </div>
-                  </div>
-
-                  <div class="border-t border-parchment-300 pt-4">
-                    <button onclick="toggleHealthCheckSource('${item.key}')" class="flex items-center gap-2 text-sm font-bold text-parchment-700 hover:text-amber-800 transition-colors">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                      📜 Primary Source Layer
-                      <svg class="w-4 h-4 transition-transform ${sourceOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    
-                    ${sourceOpen ? `
-                      <div class="mt-3 bg-gradient-to-br from-amber-100/80 via-yellow-100/50 to-parchment-100 p-4 rounded-lg border border-amber-400/50 shadow-inner space-y-3 animate-fade-in">
-                        <div class="flex items-start justify-between">
-                          <div>
-                            <h5 class="font-bold text-slate-800">${item.primarySource.author}</h5>
-                            <p class="text-xs text-parchment-600">${item.primarySource.work} (${item.primarySource.year})</p>
-                          </div>
-                          ${item.primarySource.url ? `
-                            <a href="${item.primarySource.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-amber-200/80 text-amber-900 border-amber-300/80 hover:bg-amber-300/80 transition-colors">
-                              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                              Full Text
-                              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            </a>
-                          ` : ''}
-                        </div>
-                        <blockquote class="text-sm text-slate-700 italic border-l-2 border-amber-500 pl-3 py-1 bg-white/40 rounded-r">
-                          "${item.primarySource.quote}"
-                        </blockquote>
-                        <p class="text-xs text-parchment-700 bg-white/60 p-2 rounded">
-                          <span class="font-bold text-amber-800">Connection:</span> ${item.primarySource.connection}
-                        </p>
-                      </div>
-                    ` : ''}
-                  </div>
-                </div>
-              </div>
-            ` : ''}
-          </div>
-        `;
+      const c = document.getElementById('health-check-container');
+      c.innerHTML = healthCheckData.map(i => {
+        const isOpen = openHealthCheck === i.key, srcOpen = openHealthCheckSource[i.key];
+        return `<div class="bg-white/90 rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden transition-all duration-300 border-l-4 ${i.accent.border} ${isOpen?'ring-2 '+i.accent.ring:''} hover:-translate-y-0.5 hover:shadow-lg"><button onclick="toggleHealthCheck('${i.key}')" class="w-full text-left p-5 flex items-start justify-between gap-4 hover:bg-parchment-100/50"><div class="flex gap-4"><div class="p-3 rounded-full h-fit ${i.accent.iconBg}"><svg class="w-6 h-6 ${i.accent.iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${i.icon}</svg></div><div><h3 class="text-lg font-bold text-slate-900">${i.title}</h3><p class="text-parchment-700 text-sm mt-1">${i.blurb}</p></div></div><svg class="w-5 h-5 opacity-50 transition-transform ${isOpen?'rotate-180':''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>${isOpen?`<div class="px-5 pb-5 animate-fade-in"><div class="mt-2 pt-4 border-t border-parchment-300 space-y-6"><div><h4 class="font-bold text-xs text-parchment-500 uppercase tracking-wider mb-2">Signals</h4><ul class="space-y-2">${i.signals.map(s=>`<li class="flex items-start gap-2 text-sm text-slate-700 bg-parchment-100 p-2 rounded"><span class="w-1.5 h-1.5 rounded-full mt-1.5 ${i.accent.iconColor.replace('text-','bg-')}"></span>${s}</li>`).join('')}</ul></div><div><h4 class="font-bold text-xs text-parchment-500 uppercase tracking-wider mb-2">Health Anchors</h4><div class="space-y-1">${i.anchors.map(a=>`<div class="flex gap-3 items-baseline text-sm"><span class="w-8 text-center font-bold rounded py-0.5 text-xs ${a.score===5?'bg-emerald-200 text-emerald-900':a.score===3?'bg-amber-200 text-amber-900':a.score===1?'bg-orange-200 text-orange-900':'bg-rose-200 text-rose-900'}">${a.score}</span><span class="text-slate-700">${a.label}</span></div>`).join('')}</div></div><div class="grid md:grid-cols-2 gap-4"><div class="bg-parchment-200/80 p-4 rounded-lg border border-parchment-300"><h4 class="font-bold text-parchment-800 text-sm mb-1">Then</h4><p class="text-sm text-parchment-700 italic">${i.then}</p></div><div class="bg-gradient-to-br from-amber-100/60 to-orange-100/30 p-4 rounded-lg border border-amber-200/50"><h4 class="font-bold text-amber-900 text-sm mb-1">Now Prompt</h4><p class="text-sm text-amber-900">${i.nowPrompt}</p></div></div><div class="bg-gradient-to-br from-slate-100 to-indigo-100/30 p-4 rounded-lg border border-indigo-200/40"><h4 class="font-bold text-indigo-900 text-sm mb-3">Counterweight</h4><div class="space-y-2 text-sm"><p class="text-slate-700"><span class="font-bold text-indigo-800">Best:</span> ${i.counterweight.bestCase}</p><p class="text-slate-700"><span class="font-bold text-indigo-800">Risk:</span> ${i.counterweight.riskCase}</p><p class="text-slate-700 pt-2 mt-2 border-t border-indigo-200 italic"><span class="font-bold text-indigo-800">Falsifier:</span> ${i.counterweight.falsifier}</p></div></div><div class="border-t border-parchment-300 pt-4"><button onclick="toggleHealthCheckSource('${i.key}')" class="flex items-center gap-2 text-sm font-bold text-parchment-700 hover:text-amber-800">📜 Primary Source<svg class="w-4 h-4 transition-transform ${srcOpen?'rotate-180':''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>${srcOpen?`<div class="mt-3 bg-gradient-to-br from-amber-50 via-yellow-50 to-parchment-50 p-4 rounded-lg border border-amber-300/50 shadow-inner space-y-3 animate-fade-in"><div class="flex items-start justify-between"><div><h5 class="font-bold text-slate-800">${i.primarySource.author}</h5><p class="text-xs text-parchment-600">${i.primarySource.work} (${i.primarySource.year})</p></div>${i.primarySource.url?`<a href="${i.primarySource.url}" target="_blank" class="text-xs px-2 py-1 rounded border bg-amber-100 text-amber-900 border-amber-200 hover:bg-amber-200">Full Text ↗</a>`:''}</div><blockquote class="text-sm text-slate-700 italic border-l-2 border-amber-500 pl-3 py-1 bg-white/50 rounded-r">"${i.primarySource.quote}"</blockquote><p class="text-xs text-parchment-700 bg-white/60 p-2 rounded"><span class="font-bold text-amber-800">Connection:</span> ${i.primarySource.connection}</p>${i.primarySource.contextNote?`<p class="text-xs text-slate-600 bg-indigo-50/50 p-2 rounded border border-indigo-100 italic">${i.primarySource.contextNote}</p>`:''}</div>`:''}</div></div></div>`:''}</div>`;
       }).join('');
     }
 
     function renderCoreConcepts() {
-      const container = document.getElementById('core-concepts-container');
-      container.innerHTML = coreConceptsData.map(item => {
-        const isOpen = openCoreConcept === item.key;
-        
-        return `
-          <div class="bg-white/90 backdrop-blur-sm rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden transition-all duration-300 border-l-4 ${item.accent.border} ${isOpen ? 'ring-2 ring-amber-300/60' : ''} hover:-translate-y-0.5 hover:shadow-lg">
-            <button onclick="toggleCoreConcept('${item.key}')" class="w-full text-left p-5 flex items-start justify-between gap-4 hover:bg-parchment-100/50 transition-colors">
-              <div class="flex gap-4">
-                <div class="p-3 rounded-full h-fit ${item.accent.iconBg}">
-                  <svg class="w-6 h-6 ${item.accent.iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${item.icon}</svg>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-slate-800">${item.title}</h3>
-                  <p class="text-parchment-700 text-sm leading-relaxed mt-1">${item.summary}</p>
-                </div>
-              </div>
-              <svg class="w-5 h-5 opacity-50 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            
-            ${isOpen ? `
-              <div class="px-5 pb-5 animate-fade-in">
-                <div class="pt-4 border-t border-parchment-300 space-y-4">
-                  
-                  <div class="bg-gradient-to-br from-amber-100/60 to-white p-4 rounded-lg border border-amber-300/50">
-                    <div class="flex items-start justify-between mb-2">
-                      <div>
-                        <span class="font-bold text-sm text-slate-800">${item.source.author}</span>
-                        <span class="text-xs text-parchment-600 ml-2">${item.source.work}, ${item.source.year}</span>
-                      </div>
-                      ${item.source.url ? `
-                        <a href="${item.source.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-amber-200/80 text-amber-900 border-amber-300/80 hover:bg-amber-300/80 transition-colors">
-                          Source <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
-                      ` : ''}
-                    </div>
-                    <blockquote class="text-sm italic text-slate-600 border-l-2 border-amber-400 pl-3">
-                      "${item.source.quote}"
-                    </blockquote>
-                  </div>
-                  
-                  <div class="bg-parchment-100 p-4 rounded-lg">
-                    <h4 class="font-bold text-sm text-parchment-800 mb-2">Going Deeper</h4>
-                    <p class="text-sm text-slate-700">${item.deeper}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-2">Connections to Consider</h4>
-                    <ul class="space-y-2">
-                      ${item.connections.map(c => `
-                        <li class="flex items-start gap-2 text-sm text-slate-700 bg-white/70 p-3 rounded border border-parchment-200">
-                          <span class="text-indigo-600 font-bold">→</span>
-                          ${c}
-                        </li>
-                      `).join('')}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ` : ''}
-          </div>
-        `;
+      const c = document.getElementById('core-concepts-container');
+      c.innerHTML = coreConceptsData.map(i => {
+        const isOpen = openCoreConcept === i.key, deeperOpen = openCoreConceptDeeper[i.key];
+        return `<div class="bg-white/90 rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden transition-all duration-300 border-l-4 ${i.accent.border} ${isOpen?'ring-2 ring-amber-300/60':''} hover:-translate-y-0.5 hover:shadow-lg"><button onclick="toggleCoreConcept('${i.key}')" class="w-full text-left p-5 flex items-start justify-between gap-4 hover:bg-parchment-100/50"><div class="flex gap-4"><div class="p-3 rounded-full h-fit ${i.accent.iconBg}"><svg class="w-6 h-6 ${i.accent.iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${i.icon}</svg></div><div><h3 class="text-lg font-bold text-slate-800">${i.title}</h3><p class="text-parchment-700 text-sm leading-relaxed mt-1">${i.summary}</p></div></div><svg class="w-5 h-5 opacity-50 transition-transform ${isOpen?'rotate-180':''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>${isOpen?`<div class="px-5 pb-5 animate-fade-in"><div class="pt-4 border-t border-parchment-300 space-y-4"><div class="bg-gradient-to-br from-amber-50 to-white p-4 rounded-lg border border-amber-200/50"><div class="flex items-start justify-between mb-2"><div><span class="font-bold text-sm text-slate-800">${i.source.author}</span><span class="text-xs text-parchment-600 ml-2">${i.source.work}, ${i.source.year}</span></div>${i.source.url?`<a href="${i.source.url}" target="_blank" class="text-xs px-2 py-1 rounded border bg-amber-100 text-amber-900 border-amber-200 hover:bg-amber-200">Source ↗</a>`:''}</div><blockquote class="text-sm italic text-slate-600 border-l-2 border-amber-400 pl-3">"${i.source.quote}"</blockquote></div><div class="bg-parchment-100 p-4 rounded-lg"><div class="flex justify-between items-start mb-2"><h4 class="font-bold text-sm text-parchment-800">Going Deeper</h4><button onclick="toggleCoreConceptDeeper('${i.key}')" class="text-xs text-amber-700 hover:text-amber-900 font-medium">${deeperOpen?'Hide':'Show'} Sources ▾</button></div><p class="text-sm text-slate-700">${i.deeper}</p>${deeperOpen?`<div class="mt-3 pt-3 border-t border-parchment-300 space-y-2 animate-fade-in">${i.deeperSources.map(s=>`<a href="${s.url}" target="_blank" class="block bg-white/80 p-2 rounded border border-parchment-200 hover:border-amber-300 transition-colors"><span class="font-medium text-sm text-slate-800">${s.title}</span><span class="block text-xs text-parchment-600">${s.note}</span></a>`).join('')}</div>`:''}</div><div><h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-2">Connections to Consider</h4><ul class="space-y-2">${i.connections.map(c=>`<li class="flex items-start gap-2 text-sm text-slate-700 bg-white/70 p-3 rounded border border-parchment-200"><span class="text-indigo-600 font-bold">→</span><span class="flex-1">${c.text}</span>${c.url?`<a href="${c.url}" target="_blank" class="text-amber-700 hover:text-amber-900 text-xs whitespace-nowrap">Source ↗</a>`:''}</li>`).join('')}</ul></div></div></div>`:''}</div>`;
       }).join('');
     }
 
     function renderAnthologyArgument() {
-      const container = document.getElementById('anthology-argument-container');
-      container.innerHTML = anthologyArgumentData.map((item, idx) => {
+      const c = document.getElementById('anthology-argument-container');
+      c.innerHTML = anthologyArgumentData.map((i,idx) => {
         const isOpen = openAnthologyArgument[idx];
-        
-        return `
-          <div class="bg-white/90 backdrop-blur-sm rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg">
-            <button onclick="toggleAnthologyArgument(${idx})" class="w-full text-left p-5">
-              <div class="flex justify-between items-start">
-                <h4 class="font-bold text-slate-800">${item.title}</h4>
-                <svg class="w-5 h-5 opacity-50 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </div>
-              <p class="text-sm text-parchment-700 mt-2">${item.meacham}</p>
-            </button>
-            
-            ${isOpen ? `
-              <div class="px-5 pb-5 animate-fade-in space-y-3">
-                <div class="bg-gradient-to-r from-amber-100/80 to-parchment-100 p-3 rounded text-sm border-l-2 border-amber-400">
-                  <span class="font-bold text-amber-800 text-xs uppercase">Source: </span>
-                  <span class="text-slate-700 italic">${item.source}</span>
-                </div>
-                <div class="bg-gradient-to-r from-indigo-100/50 to-slate-100 p-3 rounded text-sm border-l-2 border-indigo-400">
-                  <span class="font-bold text-indigo-800 text-xs uppercase">Tension: </span>
-                  <span class="text-slate-700">${item.tension}</span>
-                </div>
-                ${item.url ? `
-                  <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-parchment-200 text-parchment-800 border-parchment-300 hover:bg-parchment-300 transition-colors">
-                    Read More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                  </a>
-                ` : ''}
-              </div>
-            ` : ''}
-          </div>
-        `;
+        return `<div class="bg-white/90 rounded-lg ring-1 ring-black/5 border border-parchment-400/70 card-shadow overflow-hidden hover:-translate-y-0.5 hover:shadow-lg"><button onclick="toggleAnthologyArgument(${idx})" class="w-full text-left p-5"><div class="flex justify-between items-start"><h4 class="font-bold text-slate-800">${i.title}</h4><svg class="w-5 h-5 opacity-50 transition-transform ${isOpen?'rotate-180':''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div><p class="text-sm text-parchment-700 mt-2">${i.meacham}</p></button>${isOpen?`<div class="px-5 pb-5 animate-fade-in space-y-3"><div class="bg-gradient-to-r from-amber-50 to-parchment-50 p-3 rounded text-sm border-l-2 border-amber-400"><span class="font-bold text-amber-800 text-xs uppercase">Source: </span><span class="text-slate-700 italic">${i.source}</span></div><div class="bg-gradient-to-r from-indigo-50 to-slate-50 p-3 rounded text-sm border-l-2 border-indigo-400"><span class="font-bold text-indigo-800 text-xs uppercase">Tension: </span><span class="text-slate-700">${i.tension}</span></div>${i.url?`<a href="${i.url}" target="_blank" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-parchment-100 text-parchment-800 border-parchment-300 hover:bg-parchment-200">Read More ↗</a>`:''}</div>`:''}</div>`;
       }).join('');
     }
 
     function renderDiscussion() {
-      const container = document.getElementById('discussion-container');
-      container.innerHTML = discussionData.map((item, idx) => {
+      const c = document.getElementById('discussion-container');
+      const layerStyles = ["bg-gradient-to-br from-amber-100/50 to-orange-100/30 border-amber-200/50","bg-gradient-to-br from-indigo-100/60 to-slate-100 border-indigo-200/50","bg-gradient-to-br from-parchment-100 to-slate-100 border-parchment-300"];
+      const layerLabels = ["Question","Context","Connections"];
+      c.innerHTML = discussionData.map((i,idx) => {
         const layer = discussionLayers[idx] || 0;
-        const layerStyles = [
-          "bg-gradient-to-br from-amber-200 to-orange-200/50 border-amber-300/60",
-          "bg-gradient-to-br from-indigo-200/80 to-slate-200 border-indigo-300/50",
-          "bg-gradient-to-br from-parchment-200 to-slate-200 border-parchment-400"
-        ];
-        const layerLabels = ["Question", "Historical Context", "Connections"];
-        
-        return `
-          <div class="bg-white/90 backdrop-blur-sm rounded-lg ring-1 ring-black/5 border card-shadow overflow-hidden transition-all ${layerStyles[layer]} hover:-translate-y-0.5 hover:shadow-lg">
-            <div class="flex border-b border-black/5">
-              ${[0, 1, 2].map(l => `
-                <button onclick="setDiscussionLayer(${idx}, ${l})" class="flex-1 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${layer === l ? 'bg-white/60 text-slate-800' : 'text-parchment-600 hover:bg-white/30'}">
-                  ${l === 0 ? '❓' : l === 1 ? '📜' : '🔗'} ${layerLabels[l]}
-                </button>
-              `).join('')}
-            </div>
-            
-            <div class="p-5">
-              ${layer === 0 ? `
-                <div class="animate-fade-in">
-                  <h4 class="font-bold text-lg text-slate-900 mb-2">${item.question}</h4>
-                  <p class="text-sm text-parchment-800">${item.teaser}</p>
-                  <button onclick="setDiscussionLayer(${idx}, 1)" class="mt-4 text-sm text-amber-800 font-medium hover:text-amber-900 hover:underline transition-colors">
-                    Explore historical context →
-                  </button>
-                </div>
-              ` : layer === 1 ? `
-                <div class="animate-fade-in space-y-4">
-                  <div>
-                    <h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-2">Historical Context</h4>
-                    <p class="text-sm text-slate-700">${item.context}</p>
-                  </div>
-                  
-                  <div class="bg-gradient-to-br from-amber-100/60 to-white p-3 rounded-lg border border-amber-300/50">
-                    <div class="flex items-start justify-between mb-2">
-                      <div>
-                        <span class="font-bold text-sm text-slate-800">${item.source.author}</span>
-                        <span class="text-xs text-parchment-600 ml-2">${item.source.year}</span>
-                      </div>
-                      ${item.source.url ? `
-                        <a href="${item.source.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-amber-200/80 text-amber-900 border-amber-300/80 hover:bg-amber-300/80 transition-colors">
-                          Source <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                        </a>
-                      ` : ''}
-                    </div>
-                    <blockquote class="text-sm italic text-slate-600 border-l-2 border-amber-400 pl-3">
-                      "${item.source.quote}"
-                    </blockquote>
-                  </div>
-                  
-                  <button onclick="setDiscussionLayer(${idx}, 2)" class="text-sm text-indigo-700 font-medium hover:text-indigo-900 hover:underline transition-colors">
-                    See connections to consider →
-                  </button>
-                </div>
-              ` : `
-                <div class="animate-fade-in">
-                  <h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Connections to Consider</h4>
-                  <ul class="space-y-2">
-                    ${item.connections.map(c => `
-                      <li class="flex items-start gap-2 text-sm text-slate-700 bg-white/70 p-3 rounded border border-parchment-200">
-                        <span class="text-indigo-600 font-bold">→</span>
-                        ${c}
-                      </li>
-                    `).join('')}
-                  </ul>
-                  <button onclick="setDiscussionLayer(${idx}, 0)" class="mt-4 text-sm text-parchment-600 font-medium hover:text-parchment-800 hover:underline transition-colors">
-                    ← Back to question
-                  </button>
-                </div>
-              `}
-            </div>
-          </div>
-        `;
+        return `<div class="discussion-card bg-white/90 rounded-lg ring-1 ring-black/5 border card-shadow overflow-hidden ${layerStyles[layer]}"><div class="flex border-b border-black/5">${[0,1,2].map(l=>`<button onclick="setDiscussionLayer(${idx},${l})" class="flex-1 py-2 text-xs font-bold uppercase tracking-wide transition-colors ${layer===l?'bg-white/70 text-slate-800':'text-parchment-600 hover:bg-white/40'}">${l===0?'❓':l===1?'📜':'🔗'} ${layerLabels[l]}</button>`).join('')}</div><div class="p-5">${layer===0?`<div class="animate-fade-in"><h4 class="font-bold text-lg text-slate-900 mb-2">${i.question}</h4><p class="text-sm text-parchment-800">${i.teaser}</p><button onclick="setDiscussionLayer(${idx},1)" class="mt-4 text-sm text-amber-800 font-medium hover:underline">Explore context →</button></div>`:layer===1?`<div class="animate-fade-in space-y-4"><div><h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-2">Historical Context</h4><p class="text-sm text-slate-700">${i.context}</p></div><div class="bg-gradient-to-br from-amber-50 to-white p-3 rounded-lg border border-amber-200/50"><div class="flex items-start justify-between mb-2"><div><span class="font-bold text-sm text-slate-800">${i.source.author}</span><span class="text-xs text-parchment-600 ml-2">${i.source.year}</span></div>${i.source.url?`<a href="${i.source.url}" target="_blank" class="text-xs px-2 py-1 rounded border bg-amber-100 text-amber-900 border-amber-200 hover:bg-amber-200">Source ↗</a>`:''}</div><blockquote class="text-sm italic text-slate-600 border-l-2 border-amber-400 pl-3">"${i.source.quote}"</blockquote></div><button onclick="setDiscussionLayer(${idx},2)" class="text-sm text-indigo-700 font-medium hover:underline">See connections →</button></div>`:`<div class="animate-fade-in"><h4 class="font-bold text-sm text-parchment-600 uppercase tracking-wider mb-3">Connections to Consider</h4><ul class="space-y-2">${i.connections.map(c=>`<li class="flex items-start gap-2 text-sm text-slate-700 bg-white/70 p-3 rounded border border-parchment-200"><span class="text-indigo-600 font-bold">→</span>${c}</li>`).join('')}</ul><button onclick="setDiscussionLayer(${idx},0)" class="mt-4 text-sm text-parchment-600 font-medium hover:underline">← Back</button></div>`}</div></div>`;
       }).join('');
     }
 
     function renderTimeline() {
-      const container = document.getElementById('anthology-timeline');
-      container.innerHTML = `
-        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-600 via-parchment-500 to-indigo-600"></div>
-        ${anthologyTimelineData.map((event, idx) => {
-          const isOpen = openTimelineEvent === idx;
-          
-          return `
-            <div class="relative pl-12 pb-6 group">
-              <button onclick="toggleTimelineEvent(${idx})" class="absolute left-0 top-0 w-8 h-8 rounded-full border-4 border-parchment-200 shadow-md flex items-center justify-center transition-all ${isOpen ? 'bg-amber-600 scale-110 shadow-lg' : 'bg-parchment-400 group-hover:bg-amber-400'}">
-                <span class="text-xs font-bold ${isOpen ? 'text-white' : 'text-parchment-800'}">${event.year.toString().slice(-2)}</span>
-              </button>
-              
-              <div class="transition-all ${isOpen ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}">
-                <div class="flex items-baseline gap-2 mb-1">
-                  <span class="text-xs font-bold text-amber-900 bg-amber-200 px-2 py-0.5 rounded">${event.year}</span>
-                  <h4 class="font-bold text-slate-800">${event.title}</h4>
-                </div>
-                
-                ${isOpen ? `
-                  <div class="mt-3 bg-white/90 backdrop-blur-sm p-4 rounded-lg border border-parchment-400/70 card-shadow animate-fade-in space-y-3">
-                    <p class="text-sm text-parchment-800">${event.description}</p>
-                    
-                    ${event.quote ? `
-                      <blockquote class="text-sm italic text-slate-700 border-l-2 border-amber-500 pl-3 bg-gradient-to-r from-amber-100/50 to-transparent py-2 pr-2 rounded-r">
-                        "${event.quote}"
-                        <span class="block text-xs text-parchment-600 mt-1 not-italic">— ${event.quoteAuthor}</span>
-                      </blockquote>
-                    ` : ''}
-                    
-                    <div class="bg-parchment-100 p-3 rounded border border-parchment-200">
-                      <p class="text-xs text-parchment-700">
-                        <span class="font-bold text-amber-800">Why it matters for 2026:</span> ${event.relevance}
-                      </p>
-                    </div>
-                    
-                    ${event.url ? `
-                      <a href="${event.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs px-2 py-1 rounded border bg-parchment-200 text-parchment-800 border-parchment-300 hover:bg-parchment-300 transition-colors">
-                        Read More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                      </a>
-                    ` : ''}
-                  </div>
-                ` : `
-                  <p class="text-sm text-parchment-600">${event.teaser}</p>
-                `}
-              </div>
-            </div>
-          `;
-        }).join('')}
-      `;
+      const c = document.getElementById('anthology-timeline');
+      c.innerHTML = `<div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-600 via-parchment-500 to-indigo-600"></div>${anthologyTimelineData.map((e,idx) => {
+        const isOpen = openTimelineEvent === idx;
+        return `<div class="relative pl-14 pb-6 group"><button onclick="toggleTimelineEvent(${idx})" class="absolute left-0 top-0 w-10 h-10 rounded-full border-4 border-parchment-200 shadow-md flex items-center justify-center transition-all hover:scale-105 ${isOpen?'bg-amber-600 scale-110 shadow-lg':'bg-parchment-300 group-hover:bg-amber-400'}"><span class="text-xs font-bold ${isOpen?'text-white':'text-parchment-800'}">${e.year}</span></button><div class="${isOpen?'opacity-100':'opacity-80 group-hover:opacity-100'}"><h4 class="font-bold text-slate-800">${e.title}</h4>${isOpen?`<div class="mt-3 bg-white/90 p-4 rounded-lg border border-parchment-400/70 card-shadow animate-fade-in space-y-4"><p class="text-sm text-parchment-800">${e.description}</p><div class="grid md:grid-cols-2 gap-3"><div class="bg-parchment-50 p-3 rounded border border-parchment-200"><h5 class="font-bold text-xs text-parchment-600 uppercase mb-1">Key Figures</h5><ul class="text-xs text-slate-700 space-y-1">${e.keyFigures.map(f=>`<li>• ${f}</li>`).join('')}</ul></div><div class="bg-indigo-50 p-3 rounded border border-indigo-100"><h5 class="font-bold text-xs text-indigo-700 uppercase mb-1">Consequences</h5><p class="text-xs text-slate-700">${e.consequences}</p></div></div><div class="bg-amber-50 p-3 rounded border border-amber-200"><h5 class="font-bold text-xs text-amber-800 uppercase mb-1">Why It Matters for 2026</h5><p class="text-xs text-slate-700">${e.relevance}</p></div><div><h5 class="font-bold text-xs text-parchment-600 uppercase mb-2">Further Reading</h5><div class="flex flex-wrap gap-2">${e.furtherReading.map(r=>`<a href="${r.url}" target="_blank" class="text-xs px-2 py-1 rounded border bg-white text-parchment-800 border-parchment-300 hover:bg-parchment-100 hover:border-amber-300">${r.title} ↗</a>`).join('')}</div></div></div>`:`<p class="text-sm text-parchment-600">${e.teaser}</p>`}</div></div>`;
+      }).join('')}`;
     }
-
-    // === EVENT HANDLERS ===
 
     function showTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('text-amber-800', 'border-b-4', 'border-amber-600', 'bg-amber-100/50');
-        el.classList.add('text-parchment-600');
-      });
-      
-      document.getElementById('tab-' + tabId).classList.add('active');
-      const activeBtn = document.querySelector('[data-tab="' + tabId + '"]');
-      activeBtn.classList.remove('text-parchment-600');
-      activeBtn.classList.add('text-amber-800', 'border-b-4', 'border-amber-600', 'bg-amber-100/50');
+      document.querySelectorAll('.tab-btn').forEach(el => { el.classList.remove('text-amber-800','border-b-4','border-amber-600','bg-amber-100/50'); el.classList.add('text-parchment-600'); });
+      document.getElementById('tab-'+tabId).classList.add('active');
+      const btn = document.querySelector('[data-tab="'+tabId+'"]');
+      btn.classList.remove('text-parchment-600');
+      btn.classList.add('text-amber-800','border-b-4','border-amber-600','bg-amber-100/50');
     }
-
-    function toggleDrawer() {
-      const drawer = document.getElementById('drawer');
-      const overlay = document.getElementById('drawer-overlay');
-      drawer.classList.toggle('translate-x-full');
-      overlay.classList.toggle('hidden');
-    }
-
-    function toggleHealthCheck(key) {
-      openHealthCheck = openHealthCheck === key ? null : key;
-      renderHealthCheck();
-    }
-
-    function toggleHealthCheckSource(key) {
-      openHealthCheckSource[key] = !openHealthCheckSource[key];
-      renderHealthCheck();
-    }
-
-    function toggleCoreConcept(key) {
-      openCoreConcept = openCoreConcept === key ? null : key;
-      renderCoreConcepts();
-    }
-
-    function toggleAnthologyArgument(idx) {
-      openAnthologyArgument[idx] = !openAnthologyArgument[idx];
-      renderAnthologyArgument();
-    }
-
-    function setDiscussionLayer(idx, layer) {
-      discussionLayers[idx] = layer;
-      renderDiscussion();
-    }
-
-    function toggleTimelineEvent(idx) {
-      openTimelineEvent = openTimelineEvent === idx ? null : idx;
-      renderTimeline();
-    }
-
-    // === INIT ===
-    document.addEventListener('DOMContentLoaded', function() {
-      renderHealthCheck();
-      renderCoreConcepts();
-      renderAnthologyArgument();
-      renderDiscussion();
-      renderTimeline();
-    });
+    function toggleDrawer() { document.getElementById('drawer').classList.toggle('translate-x-full'); document.getElementById('drawer-overlay').classList.toggle('hidden'); }
+    function toggleHealthCheck(key) { openHealthCheck = openHealthCheck===key?null:key; renderHealthCheck(); }
+    function toggleHealthCheckSource(key) { openHealthCheckSource[key] = !openHealthCheckSource[key]; renderHealthCheck(); }
+    function toggleCoreConcept(key) { openCoreConcept = openCoreConcept===key?null:key; renderCoreConcepts(); }
+    function toggleCoreConceptDeeper(key) { openCoreConceptDeeper[key] = !openCoreConceptDeeper[key]; renderCoreConcepts(); }
+    function toggleAnthologyArgument(idx) { openAnthologyArgument[idx] = !openAnthologyArgument[idx]; renderAnthologyArgument(); }
+    function setDiscussionLayer(idx, layer) { discussionLayers[idx] = layer; renderDiscussion(); }
+    function toggleTimelineEvent(idx) { openTimelineEvent = openTimelineEvent===idx?null:idx; renderTimeline(); }
+    document.addEventListener('DOMContentLoaded', function() { renderHealthCheck(); renderCoreConcepts(); renderAnthologyArgument(); renderDiscussion(); renderTimeline(); });
   </script>
 </body>
 </html>
